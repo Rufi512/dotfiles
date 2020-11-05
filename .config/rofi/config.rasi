@@ -1,0 +1,11 @@
+configuration {
+  font: "hack 20";
+  show-icons:true;
+  icon-theme:"Papirus";
+  theme:"onedark";
+  terminal: "rofi-sensible-terminal";
+  separator-style: "dash";
+  line-padding: 2;
+  line-margin: 2;
+}
+
