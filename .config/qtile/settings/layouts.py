@@ -14,7 +14,7 @@ layouts = [
     # layout.Bsp(),
     # layout.Columns(),
     # layout.Matrix(),
-    layout.MonadTall(**layout_conf),
+    layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),

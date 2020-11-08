@@ -12,5 +12,12 @@
 :nmap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 "Quit nvim
-:nmap <c-q> :wq! <CR>
+:nmap <c-q> :q! <CR>
+
+"Tabs Navigation
+:nmap <c-o> :tabp <CR>
+:nmap <c-p> :tabn <CR>
+:nmap <c-l> :tabnew <CR>
+
+"Execute on shell
 
