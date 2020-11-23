@@ -19,5 +19,3 @@
 :nmap <c-p> :tabn <CR>
 :nmap <c-l> :tabnew <CR>
 
-"Execute on shell
-

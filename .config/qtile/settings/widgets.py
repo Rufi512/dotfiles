@@ -19,12 +19,11 @@ widgets =   [
 
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.WindowName(),
+                widget.WindowName(fontsize=14),
                 widget.Memory(format='{MemUsed}M/{MemTotal}M',foreground = '#ff33ba'),
                 widget.Net(interface="wlp2s0",foreground='#00cee8'),
-
-                widget.Systray(padding=3),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.Systray(padding=8),
+                widget.Clock(fontsize=14,format='%Y-%m-%d %a %I:%M %p'),
             ]
  
 

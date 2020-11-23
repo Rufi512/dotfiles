@@ -12,3 +12,5 @@ source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/keys/keys.vim
 
 source $HOME/.config/nvim/general/settings.vim
+
+

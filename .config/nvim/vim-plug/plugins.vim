@@ -20,4 +20,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     "Vim-visual-multi
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+    "Vim-Airline
+    Plug 'vim-airline/vim-airline'
+    "Vim syntax JS
+    Plug 'pangloss/vim-javascript'
+    "html5
+    Plug 'othree/html5.vim'
     call plug#end()
