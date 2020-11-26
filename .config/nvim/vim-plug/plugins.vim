@@ -16,6 +16,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jiangmiao/auto-pairs'
     " ColorSchemes
     Plug 'joshdick/onedark.vim'
+    Plug 'mhartington/oceanic-next'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     "Vim-visual-multi

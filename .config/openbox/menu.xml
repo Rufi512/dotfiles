@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu>
+    <menu id="root-menu" label="OpenBox 3">
+        <menu id="1" label="Development">
+            <item label="Insomnia"> <action name="Execute">
+                <execute>insomnia</execute>
+            </action> </item>
+            <item label="Qt Assistant"> <action name="Execute">
+                <execute>assistant</execute>
+            </action> </item>
+            <item label="Qt Designer"> <action name="Execute">
+                <execute>designer</execute>
+            </action> </item>
+            <item label="Qt Linguist"> <action name="Execute">
+                <execute>linguist</execute>
+            </action> </item>
+            <item label="Qt QDbusViewer"> <action name="Execute">
+                <execute>qdbusviewer</execute>
+            </action> </item>
+        </menu>
+        <menu id="2" label="Editors">
+            <item label="Nano"> <action name="Execute">
+                <execute>alacritty -e nano</execute>
+            </action> </item>
+            <item label="Neovim"> <action name="Execute">
+                <execute>alacritty -e nvim</execute>
+            </action> </item>
+        </menu>
+        <menu id="18" label="Games">
+            <item label="Dosbox"> <action name="Execute">
+                <execute>dosbox</execute>
+            </action> </item>
+        </menu>
+        <menu id="6" label="Graphics">
+            <item label="Geeqie"> <action name="Execute">
+                <execute>geeqie</execute>
+            </action> </item>
+        </menu>
+        <menu id="7" label="Multimedia">
+            <item label="Audacious"> <action name="Execute">
+                <execute>audacious</execute>
+            </action> </item>
+            <item label="PulseAudio Volume Control"> <action name="Execute">
+                <execute>pavucontrol</execute>
+            </action> </item>
+            <item label="QjackCtl"> <action name="Execute">
+                <execute>qjackctl</execute>
+            </action> </item>
+            <item label="Qt V4L2 test Utility"> <action name="Execute">
+                <execute>qv4l2</execute>
+            </action> </item>
+            <item label="Qt V4L2 video capture utility"> <action name="Execute">
+                <execute>qvidcap</execute>
+            </action> </item>
+            <item label="VLC media player"> <action name="Execute">
+                <execute>vlc</execute>
+            </action> </item>
+            <item label="Volume Icon"> <action name="Execute">
+                <execute>volumeicon</execute>
+            </action> </item>
+        </menu>
+        <menu id="5" label="Network">
+            <item label="Avahi SSH Server Browser"> <action name="Execute">
+                <execute>bssh</execute>
+            </action> </item>
+            <item label="Avahi VNC Server Browser"> <action name="Execute">
+                <execute>bvnc</execute>
+            </action> </item>
+            <item label="FireFox"> <action name="Execute">
+                <execute>firefox</execute>
+            </action> </item>
+            <item label="Google Chrome"> <action name="Execute">
+                <execute>google-chrome-stable</execute>
+            </action> </item>
+            <item label="Mail Reader"> <action name="Execute">
+                <execute>exo-open --launch MailReader</execute>
+            </action> </item>
+            <item label="qBittorrent"> <action name="Execute">
+                <execute>qbittorrent</execute>
+            </action> </item>
+            <item label="Telegram Desktop"> <action name="Execute">
+                <execute>telegram-desktop</execute>
+            </action> </item>
+            <item label="W3m"> <action name="Execute">
+                <execute>alacritty -e w3m</execute>
+            </action> </item>
+            <item label="Web Browser"> <action name="Execute">
+                <execute>exo-open --launch WebBrowser</execute>
+            </action> </item>
+        </menu>
+        <menu id="19" label="Shells">
+            <item label="Alacritty"> <action name="Execute">
+                <execute>alacritty</execute>
+            </action> </item>
+            <item label="GIT"> <action name="Execute">
+                <execute>alacritty -e git</execute>
+            </action> </item>
+            <item label="ranger"> <action name="Execute">
+                <execute>alacritty -e ranger</execute>
+            </action> </item>
+            <item label="ST"> <action name="Execute">
+                <execute>st</execute>
+            </action> </item>
+            <item label="Thunar File Manager"> <action name="Execute">
+                <execute>thunar</execute>
+            </action> </item>
+            <item label="UXTerm"> <action name="Execute">
+                <execute>uxterm</execute>
+            </action> </item>
+            <item label="Xterm"> <action name="Execute">
+                <execute>xterm</execute>
+            </action> </item>
+            <item label="ZSnes"> <action name="Execute">
+                <execute>zsnes</execute>
+            </action> </item>
+        </menu>
+        <menu id="37" label="System">
+            <menu id="36" label="Settings">
+                <menu id="21" label="GNOME">
+                    <item label="Advanced Network Configuration"> <action name="Execute">
+                        <execute>nm-connection-editor</execute>
+                    </action> </item>
+                    <item label="LightDM GTK+ Greeter settings"> <action name="Execute">
+                        <execute>lightdm-gtk-greeter-settings-pkexec</execute>
+                    </action> </item>
+                </menu>
+                <item label="ARandR"> <action name="Execute">
+                    <execute>arandr</execute>
+                </action> </item>
+                <item label="Customize Look and Feel"> <action name="Execute">
+                    <execute>lxappearance</execute>
+                </action> </item>
+                <item label="Default applications for LXSession"> <action name="Execute">
+                    <execute>lxsession-default-apps</execute>
+                </action> </item>
+                <item label="Desktop Session Settings"> <action name="Execute">
+                    <execute>lxsession-edit</execute>
+                </action> </item>
+                <item label="File Manager Settings"> <action name="Execute">
+                    <execute>thunar-settings</execute>
+                </action> </item>
+                <item label="Monitor Settings"> <action name="Execute">
+                    <execute>lxrandr</execute>
+                </action> </item>
+                <item label="nitrogen"> <action name="Execute">
+                    <execute>nitrogen</execute>
+                </action> </item>
+                <item label="Openbox Configuration Manager"> <action name="Execute">
+                    <execute>obconf</execute>
+                </action> </item>
+                <item label="Preferred Applications"> <action name="Execute">
+                    <execute>exo-preferred-applications</execute>
+                </action> </item>
+                <item label="PulseAudio Preferences"> <action name="Execute">
+                    <execute>paprefs</execute>
+                </action> </item>
+                <item label="Removable Drives and Media"> <action name="Execute">
+                    <execute>thunar-volman-settings</execute>
+                </action> </item>
+                <item label="Tint2 Settings"> <action name="Execute">
+                    <execute>tint2conf</execute>
+                </action> </item>
+            </menu>
+            <item label="Avahi Zeroconf Browser"> <action name="Execute">
+                <execute>avahi-discover</execute>
+            </action> </item>
+            <item label="Bulk Rename"> <action name="Execute">
+                <execute>/usr/lib/Thunar/ThunarBulkRename</execute>
+            </action> </item>
+            <item label="GParted"> <action name="Execute">
+                <execute>gparted</execute>
+            </action> </item>
+            <item label="Htop"> <action name="Execute">
+                <execute>alacritty -e htop</execute>
+            </action> </item>
+            <item label="Tint2"> <action name="Execute">
+                <execute>tint2</execute>
+            </action> </item>
+        </menu>
+        <menu id="38" label="Utilities">
+            <item label="About Xfce"> <action name="Execute">
+                <execute>xfce4-about</execute>
+            </action> </item>
+            <item label="compton"> <action name="Execute">
+                <execute>compton</execute>
+            </action> </item>
+            <item label="File Manager"> <action name="Execute">
+                <execute>exo-open --launch FileManager</execute>
+            </action> </item>
+            <item label="picom"> <action name="Execute">
+                <execute>picom</execute>
+            </action> </item>
+            <item label="Redshift"> <action name="Execute">
+                <execute>redshift-gtk</execute>
+            </action> </item>
+            <item label="Terminal Emulator"> <action name="Execute">
+                <execute>exo-open --launch TerminalEmulator</execute>
+            </action> </item>
+            <item label="Winetricks"> <action name="Execute">
+                <execute>winetricks --gui</execute>
+            </action> </item>
+            <item label="Xarchiver"> <action name="Execute">
+                <execute>xarchiver</execute>
+            </action> </item>
+        </menu>
+        <separator/>
+        <menu id="40" label="OpenBox">
+            <menu id="client-list-menu"/>
+            <item label="Reconfigure"> <action name="Reconfigure"/> </item>
+            <separator/>
+            <item label="Exit"> <action name="Exit"/> </item>
+        </menu>
+    </menu>
+</openbox_menu>
