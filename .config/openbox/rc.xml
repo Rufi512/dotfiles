@@ -281,7 +281,7 @@
     </keybind>
     <keybind key="mod4-q">
       <action name="Execute">
-        <execute>scrot</execute>
+        <execute>scrot -s</execute>
       </action>
     </keybind>
     <keybind key="mod4-control-v">
