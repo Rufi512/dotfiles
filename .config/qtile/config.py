@@ -25,7 +25,7 @@
 # SOFTWARE.
 
 from typing import List  # noqa: F401
-
+from libqtile import hook
 from libqtile import bar,layout,widget
 from libqtile.config import Click, Drag, Group, Key, Screen
 from libqtile.lazy import lazy
@@ -35,6 +35,16 @@ from settings.screens import screens
 from settings.widgets import widget_defaults, extension_defaults
 from settings.layouts import layouts,floating_layout
 from settings.groups import groups
+
+import os
+import subprocess
+
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([home])
+
+
 mod = "mod4"
 
 
