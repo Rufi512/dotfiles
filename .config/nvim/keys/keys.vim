@@ -4,6 +4,7 @@
 
 "Explore File
 :nmap <c-e> :Explore<CR>
+:nmap <c-r> :VimFiler<CR>
 
 "Escape
 :nmap <C-c> <ESC>
@@ -19,3 +20,8 @@
 :nmap <c-p> :tabn <CR>
 :nmap <c-l> :tabnew <CR>
 
+"Prettier
+:nmap <c-w> :Prettier <CR>
+
+"Emmet
+:imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")

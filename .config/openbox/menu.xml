@@ -2,6 +2,9 @@
 <openbox_menu>
     <menu id="root-menu" label="OpenBox 3">
         <menu id="1" label="Development">
+            <item label="CMake"> <action name="Execute">
+                <execute>cmake-gui</execute>
+            </action> </item>
             <item label="Insomnia"> <action name="Execute">
                 <execute>insomnia</execute>
             </action> </item>
@@ -16,6 +19,9 @@
             </action> </item>
             <item label="Qt QDbusViewer"> <action name="Execute">
                 <execute>qdbusviewer</execute>
+            </action> </item>
+            <item label="Sublime Text"> <action name="Execute">
+                <execute>/opt/sublime_text/sublime_text</execute>
             </action> </item>
         </menu>
         <menu id="2" label="Editors">
@@ -32,13 +38,28 @@
             </action> </item>
         </menu>
         <menu id="6" label="Graphics">
+            <item label="figma-linux"> <action name="Execute">
+                <execute>figma-linux</execute>
+            </action> </item>
             <item label="Geeqie"> <action name="Execute">
                 <execute>geeqie</execute>
             </action> </item>
+            <item label="GNU Image Manipulation Program"> <action name="Execute">
+                <execute>gimp-2.10</execute>
+            </action> </item>
+            <item label="Viewnior"> <action name="Execute">
+                <execute>viewnior</execute>
+            </action> </item>
         </menu>
         <menu id="7" label="Multimedia">
+            <item label="ALSA mixer"> <action name="Execute">
+                <execute>alacritty -e alsamixer</execute>
+            </action> </item>
             <item label="Audacious"> <action name="Execute">
                 <execute>audacious</execute>
+            </action> </item>
+            <item label="OBS Studio"> <action name="Execute">
+                <execute>obs</execute>
             </action> </item>
             <item label="PulseAudio Volume Control"> <action name="Execute">
                 <execute>pavucontrol</execute>
@@ -74,6 +95,9 @@
             </action> </item>
             <item label="Mail Reader"> <action name="Execute">
                 <execute>exo-open --launch MailReader</execute>
+            </action> </item>
+            <item label="MEGAsync"> <action name="Execute">
+                <execute>megasync</execute>
             </action> </item>
             <item label="qBittorrent"> <action name="Execute">
                 <execute>qbittorrent</execute>
@@ -170,6 +194,9 @@
             <item label="GParted"> <action name="Execute">
                 <execute>gparted</execute>
             </action> </item>
+            <item label="Hardware Locality lstopo"> <action name="Execute">
+                <execute>lstopo</execute>
+            </action> </item>
             <item label="Htop"> <action name="Execute">
                 <execute>alacritty -e htop</execute>
             </action> </item>
@@ -195,9 +222,6 @@
             </action> </item>
             <item label="Terminal Emulator"> <action name="Execute">
                 <execute>exo-open --launch TerminalEmulator</execute>
-            </action> </item>
-            <item label="Winetricks"> <action name="Execute">
-                <execute>winetricks --gui</execute>
             </action> </item>
             <item label="Xarchiver"> <action name="Execute">
                 <execute>xarchiver</execute>

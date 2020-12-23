@@ -10,21 +10,33 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
-    " File Explorer
-    Plug 'scrooloose/NERDTree'
+    "Explore files
+    Plug 'Shougo/unite.vim'
+    Plug 'Shougo/vimfiler.vim'
     " Auto pairs for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
     " ColorSchemes
     Plug 'joshdick/onedark.vim'
     Plug 'mhartington/oceanic-next'
+    Plug 'pgavlin/pulumi.vim'
+    Plug 'bluz71/vim-nightfly-guicolors'
+    Plug 'flrnd/candid.vim'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     "Vim-visual-multi
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     "Vim-Airline
     Plug 'vim-airline/vim-airline'
+    "MatchTagAlways
+    Plug 'Valloric/MatchTagAlways' 
     "Vim syntax JS
     Plug 'pangloss/vim-javascript'
-    "html5
-    Plug 'othree/html5.vim'
+    "Emmet
+    Plug 'mattn/emmet-vim'
+    "Prettier
+    Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+    "Indent
+    Plug 'Yggdroot/indentLine' 
+    "Devicons
+    Plug 'ryanoasis/vim-devicons'
     call plug#end()

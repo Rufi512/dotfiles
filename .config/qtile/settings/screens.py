@@ -32,11 +32,8 @@ max_resolution = res.index(max(res))
 if(connected_monitors>1):
     for screen in res:
         if(res.index(screen) == max_resolution):
-            screens.append(Screen(bottom=bar.Bar(widgets,24)))
+            screens.append(Screen(bottom=bar.Bar(widgets,24,opacity=0.92)))
         else:
             screens.append(Screen())
 else:
-    screens.append(Screen(bottom=bar.Bar(widgets,24)))
-    
-
-
+    screens.append(Screen(bottom=bar.Bar(widgets,24,opacity=0.92)))

@@ -1,28 +1,28 @@
-background_opacity: 0.94
+background_opacity: 0.85
 colors:
   # Default colors
   primary:
-    background: '#282a36'
-    foreground: '#f8f8f2'
+    background: '#101421'
+    foreground: '#fffbf6'
 
   # Normal colors
   normal:
-    black: '#000000'
-    red: '#ff5555'
-    green: '#50fa7b'
-    yellow: '#f1fa8c'
-    blue: '#caa9fa'
-    magenta: '#ff79c6'
-    cyan: '#8be9fd'
-    white: '#bfbfbf'
+    black: '#2e2e2e'
+    red: '#eb4129'
+    green: '#2eff00'
+    yellow: '#f6c744'
+    blue: '#47a0f3'
+    magenta: '#7b5cb0'
+    cyan: '#64dbed'
+    white: '#e5e9f0'
 
   # Bright colors
   bright:
-    black: '#575b70'
-    red: '#ff6e67'
-    green: '#5af78e'
-    yellow: '#f4f99d'
-    blue: '#caa9fa'
-    magenta: '#ff92d0'
-    cyan: '#9aedfe'
-    white: '#e6e6e6'
+    black: '#565656'
+    red: '#ec5357'
+    green: '#c0e17d'
+    yellow: '#f9da6a'
+    blue: '#49a4f8'
+    magenta: '#a47de9'
+    cyan: '#99faf2'
+    white: '#ffffff'
