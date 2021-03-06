@@ -5,35 +5,39 @@ import subprocess
 
 #Set bar on monitor high width
 
-screens=[]
+screens = []
 
+xrandr = "xrandr | grep -w 'connected' | cut -d ' ' -f 2 | wc -l"
 
-connected_monitors = subprocess.run(
-    "xrandr | grep 'connected'| cut -d ' ' -f 2",
+screen_connected = subprocess.run(
+    xrandr,
     shell=True,
-    stdout=subprocess.PIPE
-).stdout.decode("UTF-8").split("\n")[:-1].count("connected")
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE,
+).stdout.decode("UTF-8")
 
+resolutions_screens = (
+    subprocess.run(
+        "xrandr | grep \* | cut -d' ' -f4 -", shell=True, stdout=subprocess.PIPE
+    )
+    .stdout.decode("UTF-8")
+    .replace("x", "")
+    .split("\n")[:-1]
+)
 
-resolutions_screens=subprocess.run(
-    "xrandr | grep \* | cut -d' ' -f4 -",
-    shell=True,
-    stdout=subprocess.PIPE
-).stdout.decode("UTF-8").replace('x','').split("\n")[:-1]
+resolutions_avalaibles = []
 
-res=[]
+for resolution in resolutions_screens:
+    split_resolution = resolution.split("_", 1)
+    resolutions_avalaibles.append(split_resolution[0])
 
-for i in resolutions_screens:
-    res.append(int(i))
+max_resolution = resolutions_avalaibles.index(max(resolutions_avalaibles))
 
-
-max_resolution = res.index(max(res))
-
-if(connected_monitors>1):
-    for screen in res:
-        if(res.index(screen) == max_resolution):
-            screens.append(Screen(bottom=bar.Bar(widgets,24,opacity=0.92)))
+if (len(resolutions_avalaibles) > 1):
+    for screen in resolutions_avalaibles:
+        if (resolutions_avalaibles.index(screen) == max_resolution):
+            screens.append(Screen(bottom=bar.Bar(widgets, 24, opacity=0.92)))
         else:
             screens.append(Screen())
 else:
-    screens.append(Screen(bottom=bar.Bar(widgets,24,opacity=0.92)))
+    screens.append(Screen(bottom=bar.Bar(widgets, 24, opacity=0.92)))

@@ -1,4 +1,4 @@
-from libqtile import widget 
+from libqtile import widget
 from libqtile import qtile
 
 #Mouse Callbacks
@@ -8,6 +8,8 @@ def Wifi(qtile):
 
 def Htop(qtile):
     qtile.cmd_spawn('alacritty -e htop')
+
+#Widgets
 
 widgets =   [
                widget.GroupBox(fontsize=26,
@@ -34,14 +36,10 @@ widgets =   [
                 widget.Spacer(width=5),
                 widget.Wlan(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=13,format='{essid}',foreground="#00cee8",padding=0),
                 widget.Spacer(width=2),
-                widget.Net(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=13,format='{up}↑|↓{down}',foreground='#00cee8'), 
-               
-   
+                widget.Net(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=13,format='{up}↑|↓{down}',foreground='#00cee8'),
                 widget.Systray(padding=8),
-                widget.Clock(fontsize=14,format='%Y-%m-%d %a [%I:%M %p]'),
+                widget.Clock(fontsize=14,format='%Y-%m-%d %a [%H:%M %p]'),
             ]
- 
-
 
 widget_defaults = dict(
     font='sans',
