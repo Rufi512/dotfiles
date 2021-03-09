@@ -33,7 +33,7 @@ for resolution in resolutions_screens:
 
 max_resolution = resolutions_avalaibles.index(max(resolutions_avalaibles))
 
-if (len(resolutions_avalaibles) > 1):
+if (int(screen_connected) > 1):
     for screen in resolutions_avalaibles:
         if (resolutions_avalaibles.index(screen) == max_resolution):
             screens.append(Screen(bottom=bar.Bar(widgets, 24, opacity=0.92)))
