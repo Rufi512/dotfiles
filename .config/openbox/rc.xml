@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Arc-Clone</name>
+    <name>KvAdapta</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -123,10 +123,10 @@
     <number>4</number>
     <firstdesk>1</firstdesk>
     <names>
-      <!-- set names up here if you want to, like this:
-    <name>desktop 1</name>
-    <name>desktop 2</name>
-    -->
+      <name>Escritorio 1</name>
+      <name>Escritorio 2</name>
+      <name>Escritorio 3</name>
+      <name>Escritorio 4</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -274,6 +274,16 @@
         <execute>firefox</execute>
       </action>
     </keybind>
+    <keybind key="mod4-b">
+      <action name="Execute">
+        <execute>brave</execute>
+      </action>
+    </keybind>
+     <keybind key="mod4-m">
+      <action name="Execute">
+        <execute>thunderbird</execute>
+      </action>
+    </keybind>
     <keybind key="mod4-e">
       <action name="Execute">
         <execute>thunar</execute>
@@ -281,12 +291,27 @@
     </keybind>
     <keybind key="mod4-q">
       <action name="Execute">
-        <execute>scrot -s</execute>
+        <execute>scrot /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'</execute>
+      </action>
+    </keybind>
+    <keybind key="mod4-o">
+      <action name="Execute">
+        <execute>scrot -s /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'</execute>
       </action>
     </keybind>
     <keybind key="mod4-control-v">
       <action name="Execute">
         <execute>pavucontrol</execute>
+      </action>
+    </keybind>
+    <keybind key="mod4-control-0">
+      <action name="Execute">
+        <execute>pactl -- set-sink-volume 0 +5% </execute>
+      </action>
+    </keybind>
+    <keybind key="mod4-control-9">
+      <action name="Execute">
+        <execute>pactl -- set-sink-volume 0 -5% </execute>
       </action>
     </keybind>
     <keybind key="mod4-control-o">
