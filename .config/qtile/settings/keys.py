@@ -15,8 +15,8 @@ keys = [
     Key([mod], "m",lazy.spawn("thunderbird"),desc="Open mail"),
 
     #Change the scrot save folder
-    Key([mod], "q",lazy.spawn("scrot /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I:%M:%S %p]'"),desc="screenshot"),
-    Key([mod], "o",lazy.spawn("scrot -s /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I:%M:%S %p]'"),desc="screenshot select"),
+    Key([mod], "q",lazy.spawn("scrot /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot"),
+    Key([mod], "o",lazy.spawn("scrot -s /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot select"),
     
     Key([mod], "p",lazy.spawn("rofi -show run"),desc="Open All Apps"),
     #Key pavucontrol
