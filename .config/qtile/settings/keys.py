@@ -3,7 +3,8 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
-terminal = guess_terminal()
+terminal = "kitty"
+terminal_aux = guess_terminal()
 
 keys = [
     #Keys own for Apps
@@ -16,9 +17,10 @@ keys = [
 
     #Change the scrot save folder
     Key([mod], "q",lazy.spawn("scrot /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot"),
-    Key([mod], "o",lazy.spawn("scrot -s /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot select"),
+    Key([mod], "o",lazy.spawn("scrot -q 85 -s /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot select"),
     
     Key([mod], "p",lazy.spawn("rofi -show run"),desc="Open All Apps"),
+
     #Key pavucontrol
     Key([mod, "control"],"v",lazy.spawn("pavucontrol"),desc="Control Volume"),
     
@@ -56,6 +58,7 @@ keys = [
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
+    Key([mod, "control"], "Return", lazy.spawn(terminal_aux), desc="Launch terminal"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # Toggle between different layouts as defined below

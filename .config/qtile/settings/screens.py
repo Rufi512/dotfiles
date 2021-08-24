@@ -18,7 +18,7 @@ screen_connected = subprocess.run(
 
 resolutions_screens = (
     subprocess.run(
-        "xrandr | grep \* | cut -d' ' -f4 -", shell=True, stdout=subprocess.PIPE
+        "xrandr | grep /* | cut -d' ' -f4 -", shell=True, stdout=subprocess.PIPE
     )
     .stdout.decode("UTF-8")
     .replace("x", "")

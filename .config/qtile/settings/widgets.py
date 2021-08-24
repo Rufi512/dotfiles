@@ -7,7 +7,7 @@ def Wifi(qtile):
     qtile.cmd_spawn('nm-connection-editor')
 
 def Htop(qtile):
-    qtile.cmd_spawn('alacritty -e htop')
+    qtile.cmd_spawn('kitty -e htop')
 
 #Widgets
 
@@ -30,7 +30,7 @@ widgets =   [
                 ),
                 widget.WindowName(fontsize=12),
                 widget.TextBox(text='',fontsize=33,foreground='#ff33ba',padding=0),
-                widget.Memory(format='{MemUsed}M/{MemTotal}M',mouse_callbacks={'Button1': Htop},foreground = '#ff33ba'),
+                widget.Memory(format='{MemUsed:.0f}M/{MemTotal:.0f}M',mouse_callbacks={'Button1': Htop},foreground = '#ff33ba'),
                 widget.Spacer(width=7),
                 widget.TextBox(text='',mouse_callbacks={'Button1': Wifi},fontsize=33,foreground='#00cee8',padding=0),
                 widget.Spacer(width=5),
@@ -38,7 +38,7 @@ widgets =   [
                 widget.Spacer(width=2),
                 widget.Net(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=13,format='{up}↑|↓{down}',foreground='#00cee8'),
                 widget.Systray(padding=8),
-                widget.Clock(fontsize=14,format='%Y-%m-%d %a [%H:%M %p]'),
+                widget.Clock(fontsize=14,format='%Y-%m-%d %a [%H:%M %p]',timezone="America/Caracas"),
             ]
 
 widget_defaults = dict(
