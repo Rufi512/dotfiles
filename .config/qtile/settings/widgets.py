@@ -9,16 +9,25 @@ def Wifi(qtile):
 def Htop(qtile):
     qtile.cmd_spawn('kitty -e htop')
 
-#Widgets
+#Set color text
+try:
+    from settings.colors import read_json
+    color = read_json()
+    color_text = color['text']
+except:
+    color_text = '#ffffffFF'
 
 widgets =   [
-               widget.GroupBox(fontsize=26,
+               widget.GroupBox(fontsize=30,
                                padding_x=5,
                                padding_y=8,
                                disable_drag=True,
                                highlight_method='block',
-                               inactive='#5e5e5e',
-                               this_current_screen_border='#138edb',
+                               active=color_text,
+                               inactive="#a1a1a1",
+                               #background="#ffffff",
+                               foreground="#138edb",
+                               this_current_screen_border='#082758',
                                this_screen_border='#383b3d'),
                 widget.Prompt(),
                 widget.Chord(
@@ -28,25 +37,34 @@ widgets =   [
 
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.WindowName(fontsize=12),
-                widget.TextBox(text='',fontsize=33,foreground='#ff33ba',padding=0),
-                widget.Memory(format='{MemUsed:.0f}M/{MemTotal:.0f}M',mouse_callbacks={'Button1': Htop},foreground = '#ff33ba'),
+                widget.WindowName(format="",fontsize=14),
                 widget.Spacer(length=7),
-                widget.TextBox(text='',mouse_callbacks={'Button1': Wifi},fontsize=34,foreground='#00cee8',padding=0),
-                widget.Spacer(length=5),
-                widget.Wlan(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=12,format='{essid}',foreground="#00cee8",padding=0),
+                widget.TextBox(text='|',fontsize=40,padding=2,foreground=color_text,),
+                widget.TextBox(text='',fontsize=40,padding=0,foreground="#f93a7b",),
+                widget.Memory(format='{MemUsed:.0f}M/{MemTotal:.0f}M',mouse_callbacks={'Button1': Htop}, foreground=color_text, fontsize=14,),
                 widget.Spacer(length=2),
-                widget.Net(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=13,format='{up}↑|↓{down}',foreground='#00cee8'),
+                widget.TextBox(text='|',fontsize=40,padding=0, foreground=color_text,),
+                widget.Spacer(length=7),
+                widget.TextBox(text='',mouse_callbacks={'Button1': Wifi},fontsize=40,padding=0, foreground="#49a4ed",),
+                widget.Spacer(length=8),
+                widget.Wlan(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=14,format='{essid}',padding=0, foreground=color_text,),
                 widget.Spacer(length=2),
-                widget.Pomodoro(color_active='#48e34f', color_inactive='#5081f1', foreground='ffffff',color_break='#db9e3b',length_long_break=10,prefix_inactive
+                widget.Net(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=14,format='{up}↑ | {down}↓', foreground=color_text,),
+                widget.TextBox(text='|',fontsize=40,padding=0,foreground=color_text),
+                widget.Spacer(length=2),
+                widget.TextBox(text="", fontsize=24, foreground="#e12116"),
+                widget.Pomodoro(color_active='#48e34f', color_inactive=color_text, foreground=color_text,color_break='#db9e3b',length_long_break=10,prefix_inactive
 
-="Let's fucking code",length_pomodori=35,length_short_break=5,notification_on=True),
+="Let's fucking code!",length_pomodori=35,length_short_break=5,notification_on=True, fontsize=14),
+                widget.TextBox(text='|',fontsize=40,padding=0,foreground=color_text),
 
-                widget.Systray(padding=8),
+                widget.Systray(padding=8, icon_size=20),
+                widget.Spacer(length=8),
+                widget.TextBox(text='|',fontsize=40,padding=0, foreground=color_text),
+                widget.TextBox(text="",fontsize=36, foreground="#e7a237"),
+                widget.Clock(padding=2,fontsize=14,format='%Y-%m-%d %a [%H:%M]',timezone="America/Caracas",foreground=color_text),
                 widget.Spacer(length=4),
-                widget.Clock(padding=2,fontsize=14,format='%Y-%m-%d %a [%H:%M]',timezone="America/Caracas"),
-                widget.Spacer(length=4),
-                widget.CurrentLayoutIcon(fontsize=10),
+                widget.CurrentLayoutIcon(fontsize=10,foreground=color_text,),
                 widget.Spacer(length=2),
             ]
 

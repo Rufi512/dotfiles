@@ -3,10 +3,17 @@ from libqtile.config import Screen
 from settings.widgets import widgets
 import subprocess
 
+#Set color on bar
+try:
+    from settings.colors import read_json
+    color = read_json()
+    color_bar = color['bar']
+except:
+    color_bar = '#ffffffFF'
+
 #Set bar on monitor high width
 
 screens = []
-
 xrandr = "xrandr | grep -w 'connected' | cut -d ' ' -f 2 | wc -l"
 
 screen_connected = subprocess.run(
@@ -36,8 +43,8 @@ max_resolution = resolutions_avalaibles.index(max(resolutions_avalaibles))
 if (int(screen_connected) > 1):
     for screen in resolutions_avalaibles:
         if (resolutions_avalaibles.index(screen) == max_resolution):
-            screens.append(Screen(bottom=bar.Bar(widgets, 24, opacity=0.92)))
+            screens.append(Screen(bottom=bar.Bar(widgets, 28, opacity=1, background=color_bar)))
         else:
             screens.append(Screen())
 else:
-    screens.append(Screen(bottom=bar.Bar(widgets, 24, opacity=0.92)))
+    screens.append(Screen(bottom=bar.Bar(widgets, 24, opacity=1, background=color_bar)))
