@@ -1,0 +1,85 @@
+/*Background thunar*/
+
+.thunar {
+    background: rgba(10, 10, 18, 0.7);
+    background-size: 100% 100%;
+}
+
+/*Select folder standard*/
+.thunar .standard-view .view{
+ background: none;
+ text-shadow: 0px 1px 4px #212124;
+}
+
+.thunar .standard-view .view:selected{
+  background-color:#2570ed;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.thunar .standard-view treeview button{
+	background-color: rgba(10, 10, 10, 0.7);
+}
+
+.thunar .standard-view .frame widget{
+	color: green;
+}
+
+/*Select folder on tree*/
+
+.thunar .sidebar {
+	background-color: rgba(30, 30, 30, 0.7);
+}
+
+.thunar .sidebar treeview .view{
+	padding: 4px 0;
+}
+.thunar .view {
+	background: rgba(0, 0, 0, 0.4);
+	color: #ffffff;
+}
+
+.thunar .sidebar treeview .view:not(:selected){
+ background-color: rgba(10, 10, 10, 0.1);
+ font-weight: bold;
+ color: #adadad;
+}
+
+.thunar .view{
+	color: #ffffff;
+}
+
+.thunar paned separator {
+	border-left: 4px solid rgba(255, 255, 255, 1);
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+/*Status Bar*/
+
+.thunar statusbar{
+	margin-left: -15px;
+	margin-right: -10px;
+	padding: 0 15px;
+	padding-right: 30px;
+	background: rgba(10, 10, 10, 0.7);
+	font-weight: bold;
+}
+
+
+/*toolbar*/
+
+.thunar toolbar, .thunar menubar{
+	background: rgba(48,48,48,0.8);
+}
+
+.thunar toolbar toolitem widget entry{
+   font-family: 'monospace'; 
+   font-size: 16px;
+   color: white;
+ }
+
+ .thunar toolbar toolitem widget entry:focus{
+ 	 background: #0c4cb7;
+ }
+

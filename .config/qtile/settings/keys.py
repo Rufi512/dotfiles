@@ -65,6 +65,17 @@ keys = [
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
 
+    #Layout Control
+    Key([mod, "control"], "h", lazy.layout.left()),
+    Key([mod, "control"], "l", lazy.layout.right()),
+    Key([mod, "shift"], "h", lazy.layout.swap_left()),
+    Key([mod, "shift"], "l", lazy.layout.swap_right()),
+    Key([mod, "shift"], "i", lazy.layout.grow()),
+    Key([mod, "shift"], "m", lazy.layout.shrink()),
+    Key([mod, "shift"], "n", lazy.layout.normalize()),
+    Key([mod, "shift"], "o", lazy.layout.maximize()),
+    Key([mod, "shift"], "space", lazy.layout.flip()),
+
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
     Key([mod], "r", lazy.spawncmd(),

@@ -37,8 +37,17 @@ widgets =   [
                 widget.Wlan(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=12,format='{essid}',foreground="#00cee8",padding=0),
                 widget.Spacer(length=2),
                 widget.Net(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=13,format='{up}↑|↓{down}',foreground='#00cee8'),
+                widget.Spacer(length=2),
+                widget.Pomodoro(color_active='#48e34f', color_inactive='#5081f1', foreground='ffffff',color_break='#db9e3b',length_long_break=10,prefix_inactive
+
+="Let's fucking code",length_pomodori=35,length_short_break=5,notification_on=True),
+
                 widget.Systray(padding=8),
-                widget.Clock(fontsize=14,format='%Y-%m-%d %a [%H:%M %p]',timezone="America/Caracas"),
+                widget.Spacer(length=4),
+                widget.Clock(padding=2,fontsize=14,format='%Y-%m-%d %a [%H:%M]',timezone="America/Caracas"),
+                widget.Spacer(length=4),
+                widget.CurrentLayoutIcon(fontsize=10),
+                widget.Spacer(length=2),
             ]
 
 widget_defaults = dict(

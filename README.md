@@ -13,6 +13,7 @@ Hello!, this is my dotfiles, if you want you can take a look and take something 
 - [**Rofi**](https://github.com/Rufi512/dotfiles/tree/main/.config/rofi)
 - [**Tint2**](https://github.com/Rufi512/dotfiles/tree/main/.config/tint2)
 - [**Kitty**](https://github.com/Rufi512/dotfiles/tree/main/.config/kitty)
+- [**Thunar**](https://github.com/Rufi512/dotfiles/tree/main/.config/thunar)
 - [**Neofetch**](https://github.com/Rufi512/dotfiles/tree/main/.config/neofetch)
 
 
