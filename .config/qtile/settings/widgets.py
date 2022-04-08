@@ -1,6 +1,9 @@
 from libqtile import widget
 from libqtile import qtile
+from settings.get_resolutions import resolutions_avalaibles
 
+fontsize_value = 12
+fontsize_icon = 23
 #Mouse Callbacks
 
 def Wifi(qtile):
@@ -17,9 +20,22 @@ try:
 except:
     color_text = '#ffffffFF'
 
+#Set font Size
+
+try:
+    longer = len(resolutions_avalaibles)
+    if int(resolutions_avalaibles[longer-1][:-3]) > 1300 :
+        fontsize_value = 14
+        fontsize_icon = 27
+    else:
+        fontsize_value = 12
+        fontsize_icon = 23
+except:
+    fontsize_value = 12
+
 widgets =   [
-               widget.GroupBox(fontsize=30,
-                               padding_x=5,
+               widget.GroupBox(fontsize=20,
+                               padding_x=6,
                                padding_y=8,
                                disable_drag=True,
                                highlight_method='block',
@@ -37,32 +53,29 @@ widgets =   [
 
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.WindowName(format="",fontsize=14),
+                widget.WindowName(format="",fontsize=fontsize_value),
                 widget.Spacer(length=7),
-                widget.TextBox(text='|',fontsize=40,padding=2,foreground=color_text,),
-                widget.TextBox(text='',fontsize=40,padding=0,foreground="#f93a7b",),
-                widget.Memory(format='{MemUsed:.0f}M/{MemTotal:.0f}M',mouse_callbacks={'Button1': Htop}, foreground=color_text, fontsize=14,),
+                widget.TextBox(text='|',fontsize=33,padding=0,foreground=color_text,),
+                widget.TextBox(text='',fontsize=fontsize_icon,padding=3,foreground="#f93a7b",),
+                widget.Memory(format='{MemUsed:.0f}M/{MemTotal:.0f}M',mouse_callbacks={'Button1': Htop}, foreground=color_text, fontsize=fontsize_value,),
                 widget.Spacer(length=2),
-                widget.TextBox(text='|',fontsize=40,padding=0, foreground=color_text,),
-                widget.Spacer(length=7),
-                widget.TextBox(text='',mouse_callbacks={'Button1': Wifi},fontsize=40,padding=0, foreground="#49a4ed",),
+                widget.TextBox(text='|',fontsize=33,padding=0, foreground=color_text,),
+                widget.Spacer(length=3),
+                widget.TextBox(text='',mouse_callbacks={'Button1': Wifi},fontsize=fontsize_icon,padding=3, foreground="#49a4ed",),
                 widget.Spacer(length=8),
-                widget.Wlan(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=14,format='{essid}',padding=0, foreground=color_text,),
+                widget.Wlan(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=fontsize_value,format='{essid}',padding=0, foreground=color_text,),
                 widget.Spacer(length=2),
-                widget.Net(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=14,format='{up}↑ | {down}↓', foreground=color_text,),
-                widget.TextBox(text='|',fontsize=40,padding=0,foreground=color_text),
-                widget.Spacer(length=2),
-                widget.TextBox(text="", fontsize=24, foreground="#e12116"),
-                widget.Pomodoro(color_active='#48e34f', color_inactive=color_text, foreground=color_text,color_break='#db9e3b',length_long_break=10,prefix_inactive
-
-="Let's fucking code!",length_pomodori=35,length_short_break=5,notification_on=True, fontsize=14),
-                widget.TextBox(text='|',fontsize=40,padding=0,foreground=color_text),
-
-                widget.Systray(padding=8, icon_size=20),
+                widget.Net(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=fontsize_value,format='{up}↑ | {down}↓', foreground=color_text,),
+                #widget.TextBox(text='|',fontsize=33,padding=0,foreground=color_text),
+                #widget.Spacer(length=2),
+                #widget.TextBox(text="", fontsize=34, foreground="#f3b644"),
+                #widget.GenPollText(update_interval=500, func=lambda:subprocess.call([os.path.expanduser("~/.config/qtile/scripts/track_info.sh"), "tauon"]).decode("utf-8"),mouse_callbacks={'Button1':lambda:subprocess.call([os.path.expanduser("~/.config/qtile/scripts/track_info.sh"), "tauon", "PLAY"]), 'Button2':lambda:subprocess.call([os.path.expanduser("~/.config/qtile/scripts/track_info.sh"), "tauon", "PAUSE"])}),
+                widget.TextBox(text='|',fontsize=33,padding=0,foreground=color_text),
+                widget.Systray(padding=8, icon_size=19),
                 widget.Spacer(length=8),
-                widget.TextBox(text='|',fontsize=40,padding=0, foreground=color_text),
-                widget.TextBox(text="",fontsize=36, foreground="#e7a237"),
-                widget.Clock(padding=2,fontsize=14,format='%Y-%m-%d %a [%H:%M]',timezone="America/Caracas",foreground=color_text),
+                widget.TextBox(text='|',fontsize=33,padding=0, foreground=color_text),
+                widget.TextBox(text="",fontsize=fontsize_icon, foreground="#e7a237"),
+                widget.Clock(padding=2,fontsize=fontsize_value,format='%Y-%m-%d %a [%H:%M]',foreground=color_text),
                 widget.Spacer(length=4),
                 widget.CurrentLayoutIcon(fontsize=10,foreground=color_text,),
                 widget.Spacer(length=2),
@@ -70,7 +83,7 @@ widgets =   [
 
 widget_defaults = dict(
     font='sans',
-    fontsize=12,
+    fontsize=fontsize_value,
     padding=4
 )
 extension_defaults = widget_defaults.copy()
