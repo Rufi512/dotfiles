@@ -8,7 +8,7 @@ terminal_aux = guess_terminal()
 
 keys = [
     #Keys own for Apps
-    Key([mod], "l",lazy.spawn("rofi -show drun"),desc="Open Apps"),
+    Key([mod], "l",lazy.spawn("rofi -show drun -show-icons"),desc="Open Apps"),
     Key([mod], "t",lazy.spawn("telegram-desktop"),desc="Open Telegram"),
     Key([mod], "f",lazy.spawn("firefox"),desc="Open Firefox"),
     Key([mod], "b",lazy.spawn("brave"),desc="Open Brave"),
@@ -16,8 +16,8 @@ keys = [
     Key([mod], "m",lazy.spawn("thunderbird"),desc="Open mail"),
 
     #Change the scrot save folder
-    Key([mod], "q",lazy.spawn("scrot /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot"),
-    Key([mod], "o",lazy.spawn("scrot -q 85 -s /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot select"),
+    Key([mod], "q",lazy.spawn("scrot /mnt/mount/arch_folder/screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot"),
+    Key([mod], "o",lazy.spawn("scrot -q 100 -s /mnt/mount/arch_folder/screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot select"),
     
     Key([mod], "p",lazy.spawn("rofi -show run"),desc="Open All Apps"),
 

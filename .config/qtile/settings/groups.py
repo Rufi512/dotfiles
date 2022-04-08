@@ -4,7 +4,7 @@ from libqtile.config import Key, Group
 from libqtile.command import lazy
 from settings.keys import mod, keys
 
-groups = [Group(i) for i in ["","","","","","","",""]]
+groups = [Group(i) for i in ["","","","","","","",""]]
 
 for i, group in enumerate(groups):
     actual_key = str(i + 1)
