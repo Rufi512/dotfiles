@@ -26,7 +26,7 @@ try:
     longer = len(resolutions_avalaibles)
     if int(resolutions_avalaibles[longer-1][:-3]) > 1300 :
         fontsize_value = 14
-        fontsize_icon = 27
+        fontsize_icon = 26
     else:
         fontsize_value = 12
         fontsize_icon = 23
@@ -34,7 +34,7 @@ except:
     fontsize_value = 12
 
 widgets =   [
-               widget.GroupBox(fontsize=20,
+               widget.GroupBox(fontsize=23,
                                padding_x=6,
                                padding_y=8,
                                disable_drag=True,
@@ -62,15 +62,16 @@ widgets =   [
                 widget.TextBox(text='|',fontsize=33,padding=0, foreground=color_text,),
                 widget.Spacer(length=3),
                 widget.TextBox(text='',mouse_callbacks={'Button1': Wifi},fontsize=fontsize_icon,padding=3, foreground="#49a4ed",),
-                widget.Spacer(length=8),
-                widget.Wlan(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=fontsize_value,format='{essid}',padding=0, foreground=color_text,),
-                widget.Spacer(length=2),
-                widget.Net(interface="wlp2s0",mouse_callbacks={'Button1': Wifi},fontsize=fontsize_value,format='{up}↑ | {down}↓', foreground=color_text,),
+                widget.Spacer(length=4),
+                widget.Net(mouse_callbacks={'Button1': Wifi},fontsize=fontsize_value,format='Speed: {up}  | {down} ', foreground=color_text,),
                 #widget.TextBox(text='|',fontsize=33,padding=0,foreground=color_text),
                 #widget.Spacer(length=2),
                 #widget.TextBox(text="", fontsize=34, foreground="#f3b644"),
                 #widget.GenPollText(update_interval=500, func=lambda:subprocess.call([os.path.expanduser("~/.config/qtile/scripts/track_info.sh"), "tauon"]).decode("utf-8"),mouse_callbacks={'Button1':lambda:subprocess.call([os.path.expanduser("~/.config/qtile/scripts/track_info.sh"), "tauon", "PLAY"]), 'Button2':lambda:subprocess.call([os.path.expanduser("~/.config/qtile/scripts/track_info.sh"), "tauon", "PAUSE"])}),
                 widget.TextBox(text='|',fontsize=33,padding=0,foreground=color_text),
+                widget.TextBox(padding=5,text="",fontsize=18, foreground="#ef203d"),
+                widget.ThermalZone(),
+                widget.TextBox(text='|',fontsize=33,padding=0, foreground=color_text),
                 widget.Systray(padding=8, icon_size=19),
                 widget.Spacer(length=8),
                 widget.TextBox(text='|',fontsize=33,padding=0, foreground=color_text),
@@ -82,7 +83,7 @@ widgets =   [
             ]
 
 widget_defaults = dict(
-    font='sans',
+    font='MesloLGS NF',
     fontsize=fontsize_value,
     padding=4
 )

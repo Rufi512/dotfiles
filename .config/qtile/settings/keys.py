@@ -14,10 +14,11 @@ keys = [
     Key([mod], "b",lazy.spawn("brave"),desc="Open Brave"),
     Key([mod], "e",lazy.spawn("thunar"),desc="Open Thunar"),
     Key([mod], "m",lazy.spawn("thunderbird"),desc="Open mail"),
+    Key([mod, "control"], "b",lazy.spawn("betterlockscreen -l"),desc="lock screen"),
 
     #Change the scrot save folder
-    Key([mod], "q",lazy.spawn("scrot /mnt/mount/arch_folder/screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot"),
-    Key([mod], "o",lazy.spawn("scrot -q 100 -s /mnt/mount/arch_folder/screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot select"),
+    Key([mod], "q",lazy.spawn("scrot /mnt/win/arch_folder/screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot"),
+    Key([mod], "o",lazy.spawn("scrot -q 100 -s /mnt/win/arch_folder/screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot select"),
     
     Key([mod], "p",lazy.spawn("rofi -show run"),desc="Open All Apps"),
 

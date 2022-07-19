@@ -20,4 +20,4 @@ if (int(screen_connected) > 1):
         else:
             screens.append(Screen())
 else:
-    screens.append(Screen(bottom=bar.Bar(widgets, 22, opacity=1, background=color_bar)))
+    screens.append(Screen(bottom=bar.Bar(widgets, 24, opacity=1, background=color_bar)))
