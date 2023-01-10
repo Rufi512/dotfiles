@@ -1,9 +1,10 @@
 from libqtile.config import Key
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
-
+import os
 mod = "mod4"
 terminal = "kitty"
+home = os.getenv('HOME', default='')
 terminal_aux = guess_terminal()
 
 keys = [
@@ -17,8 +18,8 @@ keys = [
     Key([mod, "control"], "b",lazy.spawn("betterlockscreen -l"),desc="lock screen"),
 
     #Change the scrot save folder
-    Key([mod], "q",lazy.spawn("scrot /mnt/win/arch_folder/screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot"),
-    Key([mod], "o",lazy.spawn("scrot -q 100 -s /mnt/win/arch_folder/screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'"),desc="screenshot select"),
+    Key([mod], "q",lazy.spawn(home + "/.config/qtile/settings/scripts/scrot.sh full"),desc="screenshot"),
+    Key([mod], "o",lazy.spawn(home + "/.config/qtile/settings/scripts/scrot.sh"),desc="screenshot select"),
     
     Key([mod], "p",lazy.spawn("rofi -show run"),desc="Open All Apps"),
 
@@ -26,8 +27,8 @@ keys = [
     Key([mod, "control"],"v",lazy.spawn("pavucontrol"),desc="Control Volume"),
     
     #Volume control
-    Key([mod, "control"], "0",lazy.spawn("pactl -- set-sink-volume 0 +5%"),desc="Increase Volume"),
-    Key([mod, "control"], "9",lazy.spawn("pactl -- set-sink-volume 0 -5%"),desc="Decrease Volume"),
+    Key([mod, "control"], "0",lazy.spawn(home + "/.config/qtile/settings/scripts/changevolume.sh up"),desc="Increase Volume"),
+    Key([mod, "control"], "9",lazy.spawn(home + "/.config/qtile/settings/scripts/changevolume.sh down"),desc="Decrease Volume"),
 
     # Keys Redshift
     Key([mod, "control"],"o",lazy.spawn("redshift -O 3600k"),desc="Redshift Active"),
