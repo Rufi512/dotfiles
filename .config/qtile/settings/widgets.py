@@ -1,5 +1,6 @@
 from libqtile import widget, qtile
 from settings.get_resolutions import resolutions_avalaibles
+from settings.scripts.playerctl import metadata
 fontsize_value = 12
 fontsize_icon = 23
 #Mouse Callbacks
@@ -53,6 +54,7 @@ widgets =   [
                 ),
                 widget.WindowName(format="",fontsize=fontsize_value),
                 widget.Spacer(length=7),
+                widget.GenPollText(scroll_repeat=True,update_interval=0.5,scroll_delay=2,scroll_step=2,scroll=True,width=450,func=metadata),
                 widget.TextBox(text='|',fontsize=33,padding=0,foreground=color_text,),
                 widget.TextBox(text='',fontsize=fontsize_icon,padding=3,foreground="#f93a7b",),
                 widget.Memory(format='{MemUsed:.0f}M/{MemTotal:.0f}M',mouse_callbacks={'Button1': Htop}, foreground=color_text, fontsize=fontsize_value,),
@@ -62,10 +64,6 @@ widgets =   [
                 widget.TextBox(text='',mouse_callbacks={'Button1': Wifi},fontsize=fontsize_icon,padding=3, foreground="#49a4ed",),
                 widget.Spacer(length=4),
                 widget.Net(mouse_callbacks={'Button1': Wifi},fontsize=fontsize_value,format='Speed: {up}  | {down} ', foreground=color_text,),
-                #widget.TextBox(text='|',fontsize=33,padding=0,foreground=color_text),
-                #widget.Spacer(length=2),
-                #widget.TextBox(text="", fontsize=22, foreground="#f3b644"),
-                #widget.GenPollText(update_interval=500, func=lambda:subprocess.call([os.path.expanduser("~/.config/qtile/scripts/track_info.sh"), "tauon"]).decode("utf-8"),mouse_callbacks={'Button1':lambda:subprocess.call([os.path.expanduser("~/.config/qtile/scripts/track_info.sh"), "tauon", "PLAY"]), 'Button2':lambda:subprocess.call([os.path.expanduser("~/.config/qtile/scripts/track_info.sh"), "tauon", "PAUSE"])}),
                 widget.TextBox(text='|',fontsize=33,padding=0,foreground=color_text),
                 widget.TextBox(padding=5,text="",fontsize=18, foreground="#ef203d"),
                 widget.ThermalSensor(tag_sensor='Package id 0'),
