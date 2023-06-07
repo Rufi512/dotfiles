@@ -6,6 +6,8 @@ To make openbox show all your installed applications,you can install <b>[MenuMak
 mmaker -vf OpenBox3
 ```
 
+optional: obmenu-generator
+
 | Shortcut Key | App |
 | ------------- | ------------- |
 | mod4 + Enter | Open Terminal  |
@@ -16,6 +18,7 @@ mmaker -vf OpenBox3
 | mod4 + l  | Open Rofi drun  |
 | mod4 + p  | Open Rofi run  |
 | mod4 + t  | Open Telegram  |
+| mod4 + control + b  | betterlockscreen  |
 | mod4 + control + o  | Redshift 3600K  |
 | mod4 + control + p  | Redshift Off  |
 | mod4 + control + 0  | Increase Volume  |

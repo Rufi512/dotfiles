@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>KvAdapta</name>
+    <name>ZorinGrey</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -123,10 +123,10 @@
     <number>4</number>
     <firstdesk>1</firstdesk>
     <names>
-      <name>Escritorio 1</name>
-      <name>Escritorio 2</name>
-      <name>Escritorio 3</name>
-      <name>Escritorio 4</name>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -256,12 +256,17 @@
     </keybind>
     <keybind key="mod4-Return">
       <action name="Execute">
-        <execute>alacritty</execute>
+        <execute>kitty</execute>
       </action>
     </keybind>
     <keybind key="mod4-l">
       <action name="Execute">
-        <execute>rofi -show drun</execute>
+        <execute>rofi -show drun -show-icons</execute>
+      </action>
+    </keybind>
+    <keybind key="mod4-p">
+      <action name="Execute">
+        <execute>/home/rufi512/.config/rofi/powermenu/powermenu.sh</execute>
       </action>
     </keybind>
     <keybind key="mod4-t">
@@ -279,7 +284,7 @@
         <execute>brave</execute>
       </action>
     </keybind>
-     <keybind key="mod4-m">
+    <keybind key="mod4-m">
       <action name="Execute">
         <execute>thunderbird</execute>
       </action>
@@ -291,12 +296,12 @@
     </keybind>
     <keybind key="mod4-q">
       <action name="Execute">
-        <execute>scrot /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'</execute>
+        <execute>/home/rufi512/.config/tint2/executors/scrot.sh full</execute>
       </action>
     </keybind>
     <keybind key="mod4-o">
       <action name="Execute">
-        <execute>scrot -s /home/rufi512/Imágenes/Screenshots/'%Y-%m-%d %A [%I-%M-%S %p].png'</execute>
+        <execute>/home/rufi512/.config/tint2/executors/scrot.sh</execute>
       </action>
     </keybind>
     <keybind key="mod4-control-v">
@@ -304,14 +309,19 @@
         <execute>pavucontrol</execute>
       </action>
     </keybind>
+    <keybind key="mod4-control-b">
+      <action name="Execute">
+        <execute>betterlockscreen -l</execute>
+      </action>
+    </keybind>
     <keybind key="mod4-control-0">
       <action name="Execute">
-        <execute>pactl -- set-sink-volume 0 +5% </execute>
+        <execute>/home/rufi512/.config/tint2/executors/changevolume.sh up</execute>
       </action>
     </keybind>
     <keybind key="mod4-control-9">
       <action name="Execute">
-        <execute>pactl -- set-sink-volume 0 -5% </execute>
+        <execute>/home/rufi512/.config/tint2/executors/changevolume.sh down</execute>
       </action>
     </keybind>
     <keybind key="mod4-control-o">
@@ -322,6 +332,11 @@
     <keybind key="mod4-control-p">
       <action name="Execute">
         <execute>redshift -x</execute>
+      </action>
+    </keybind>
+    <keybind key="mod4-control-m">
+      <action name="Execute">
+        <command>wmctrl -k on</command>
       </action>
     </keybind>
     <keybind key="mod4-control-r">

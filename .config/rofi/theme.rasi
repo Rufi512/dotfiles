@@ -2,7 +2,7 @@
   font: "Roboto 10";
 
   bg0    : #1f1f1f80;
-  bg1    : #030b1ae8;
+  bg1    : #0e0118db;
   bg2    : #2c2c2c;
   bg3    : #393939bf;
   fg0    : #ffffff;
@@ -11,7 +11,7 @@
 
   background-color : transparent;
   text-color       : @fg0;
-
+  text-align:center;
   margin  : 0px;
   padding : 0px;
   spacing : 0px;
@@ -23,12 +23,13 @@ element-icon, element-text, scrollbar {
 
 window {
   location : center;
-  width    : 600px;
-  height   : 600px;
+  width    : 700px;
+  height   : 700px;
   y-offset : -4px;
-
   background-color : @bg1;
   border-radius    : 8px;
+  border           : 2px 2px 2px 2px solid;
+  border-color:#ffffff;
 }
 
 mainbox {
@@ -37,17 +38,19 @@ mainbox {
 }
 
 inputbar {
-  padding          : 8px;
+  padding          : 105px 130px;
   spacing          : 4px;
-  children         : [ icon-search, entry ];
-  border           : 0 0 2px 0 solid;
-  border-color     : @accent;
-  border-radius    : 2px;
-  background-color : @bg0;
+  children         : [ entry ];
+  border-radius    : 4px;
+  text-align:center;
+  vertical-align : center;
+  background-image : url("~/.config/rofi/images/bg.jpg", width);
 }
 
 icon-search, entry, element-icon, element-text {
   vertical-align: 0.5;
+  font              : "monospace 14";
+  text-color:#ffffff;
 }
 
 icon-search {
@@ -57,14 +60,19 @@ icon-search {
 }
 
 entry {
-  font              : "monospace 12";
-  placeholder       : "Type here to search";
-  placeholder-color : @fg1;
+  padding : 12px 20px;
+  font              : "monospace 14";
+  vertical-align: 0.5;
+  placeholder       : "What's up dude?";
+  placeholder-color : #ffffff;
+  background-color: #000000cf;
+  border           : 2px 2px 2px 2px solid;
+  border-radius    : 6px;
 }
 
 textbox {
   padding          : 4px 8px;
-  background-color : @bg2;
+  background-color : #000;
 }
 
 listview {
@@ -83,21 +91,16 @@ element {
   dummy-expand: true;
 }
 
-element normal urgent {
-  text-color: @urgent;
-}
 
 element normal active {
   text-color: @accent;
 }
 
 element selected {
-  background-color: @bg3;
+  background-color: #fff;
+  text-color:#000;
 }
 
-element selected urgent {
-  background-color: @urgent;
-}
 
 element-icon {
   size: 2em;
