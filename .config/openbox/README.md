@@ -26,4 +26,4 @@ optional: obmenu-generator
 | mod4 + q | Full capture  |
 | mod4 + o | Capture selection |
 
-Scrot is used to take a screenshot, you need to specify the path to save the images in rc.xml lines 294 and 299, these will be saved following the format [Current date - weekday name - current time]
+Scrot is used to take a screenshot, you need to specify the path to save the images in rc.xml lines 299 and 304
