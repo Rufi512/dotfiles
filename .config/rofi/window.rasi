@@ -16,37 +16,19 @@ window {
     border-color:       @accent-color;
     location:   center;
     width:800;
-    height:480;
-    children:[contentbox, listview];
-    orientation:horizontal;
+    height:350;
+    children:[inputbar,listview];
+    orientation:vertical;
 
 }
-
-
 
 prompt, entry, element-text, element-icon {
     vertical-align: 0;
 }
 
-contentbox{
-    background:transparent;
-    background-image : url("~/.config/rofi/images/bg.jpg", width);
-    children:[inputbar, message];
-    orientation:vertical;
-    horizontal-align: center;
-    vertical-align: 0.5;
-    position:center;
-    padding:0 20 0 20;
-    width:360px;
-    x-align: center;
-    y-align: center;
-    expand:false;
-    fixed-height:true;
-}
-
 inputbar{
-   margin: 200px 0 0 0; 
-   horizontal-align: center;
+  padding:0;
+  horizontal-align: center;
   vertical-align: center;
   border-color: #fff;
   border:  0px 0px 2px 0px;
@@ -97,7 +79,7 @@ element {
     spacing:    8px;
 }
 
-element selected normal {
+element.selected{
     background-color:   @accent-color;
 }
 

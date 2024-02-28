@@ -34,5 +34,5 @@ handle_option() {
     esac
 }
 
-SELECTION="$(list_icons | rofi -dmenu -theme /home/rufi512/.config/rofi/powermenu/options-menu.rasi -selected-row 2)"
+SELECTION="$(list_icons | rofi -dmenu -theme ~/.config/rofi/powermenu/options-menu.rasi -selected-row 2)"
 handle_option $SELECTION

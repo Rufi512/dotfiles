@@ -17,6 +17,8 @@ yay -S nerd-fonts-ubuntu-mono ttf-meslo-nerd-font-powerlevel10k
 | mod + m  | Open Thunderbird  |
 | mod + l  | Open Rofi drun  |
 | mod + p  | Open Rofi run  |
+| mod + p  | Open Rofi calc |
+| mod + x  | Open Rofi window  |
 | mod + t  | Open Telegram  |
 | mod + control + o  | Redshift 3600K  |
 | mod + control + p  | Redshift Off  |

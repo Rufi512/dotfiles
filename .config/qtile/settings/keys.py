@@ -10,6 +10,8 @@ terminal_aux = guess_terminal()
 keys = [
     #Keys own for Apps
     Key([mod], "l",lazy.spawn("rofi -show drun -show-icons"),desc="Open Apps"),
+    Key([mod], "c",lazy.spawn("rofi -show calc -modi calc -no-show-match -no-sort"),desc="Open calculator"),
+    Key([mod], "x",lazy.spawn("rofi -show window --show-icons -theme ~/.config/rofi/window.rasi"),desc="Show windows"),
     Key([mod], "t",lazy.spawn("telegram-desktop"),desc="Open Telegram"),
     Key([mod], "f",lazy.spawn("firefox"),desc="Open Firefox"),
     Key([mod], "b",lazy.spawn("brave"),desc="Open Brave"),
@@ -21,7 +23,7 @@ keys = [
     Key([mod], "q",lazy.spawn(home + "/.config/qtile/settings/scripts/scrot.sh full"),desc="screenshot"),
     Key([mod], "o",lazy.spawn(home + "/.config/qtile/settings/scripts/scrot.sh"),desc="screenshot select"),
     
-    Key([mod], "p",lazy.spawn("rofi -show run"),desc="Open All Apps"),
+    Key([mod], "p",lazy.spawn(home + "/.config/rofi/powermenu/powermenu.sh"),desc="Open powermenu"),
 
     #Key pavucontrol
     Key([mod, "control"],"v",lazy.spawn("pavucontrol"),desc="Control Volume"),
