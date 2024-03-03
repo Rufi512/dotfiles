@@ -24,6 +24,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from os import path
+import subprocess
 from typing import List  # noqa: F401
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
@@ -34,9 +36,13 @@ from settings.screens import screens
 from settings.groups import groups
 from settings.layouts import layouts,floating_layout
 from settings.widgets import widget_defaults, extension_defaults
-
+from libqtile import hook
+from settings.path import qtile_path
 mod = "mod4"
 
+@hook.subscribe.startup_once
+def autostart():
+    subprocess.call([path.join(qtile_path, 'autostart.sh')])
 
 # Drag floating layouts.
 mouse = [
