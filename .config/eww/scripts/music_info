@@ -1,0 +1,82 @@
+#!/bin/bash
+# scripts by adi1090x
+
+## Get data
+STATUS="$(playerctl status)"
+COVER="$(playerctl metadata --format "{{ mpris:artUrl }}")"
+MUSIC_DIR="$HOME/Music"
+TITLE="$(playerctl metadata --format "{{ title }}")"
+ARTIST="$(playerctl metadata --format "{{ artist }}")"
+LENGTH="$(playerctl metadata --format "{{ duration(mpris:length) }}")"
+CURRENT="$(playerctl metadata --format "{{ duration(position) }}")"
+## Get status
+get_status() {
+	if [[ $STATUS == "Playing" ]]; then
+		echo "images/icons/music/play-button.png"
+	else
+		echo "images/icons/music/pause-button.png"
+	fi
+}
+
+
+## Get song title
+get_song() { 
+	if [[ -z "$TITLE" ]]; then
+		echo "No player avalaible"
+	else
+		echo "$TITLE"
+	fi	
+}
+
+## Get artist
+get_artist() {
+	if [[ -z "$ARTIST" ]]; then
+		echo ""
+	else
+		echo "$ARTIST"
+	fi	
+}
+
+## Get time
+get_time() {
+	if [[ -z "$CURRENT" ]]; then
+		echo ""
+	else
+		echo "$CURRENT"
+	fi	
+}
+
+get_time_length() {
+	if [[ -z "$LENGTH" ]]; then
+		echo ""
+	else
+		echo "$LENGTH"
+	fi	
+}
+
+
+## Get cover
+get_cover() {
+	if [[ -z "$TITLE" ]]; then
+		echo "images/icons/music/off.png"
+	else
+		echo "$COVER"
+	fi
+}
+
+## Execute accordingly
+if [[ "$1" == "--song" ]]; then
+	get_song
+elif [[ "$1" == "--artist" ]]; then
+	get_artist
+elif [[ "$1" == "--status" ]]; then
+	get_status
+elif [[ "$1" == "--time" ]]; then
+	get_time
+elif [[ "$1" == "--ltime" ]]; then
+	get_time_length
+elif [[ "$1" == "--cover" ]]; then
+	get_cover
+elif [[ "$1" == "--toggle" ]]; then
+	playerctl play-pause
+fi

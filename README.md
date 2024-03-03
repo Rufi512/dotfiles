@@ -6,6 +6,7 @@ Hello! this is my dotfiles, if you want you can take a look and take something t
 
 - [**Alacritty**](https://github.com/Rufi512/dotfiles/tree/main/.config/alacritty)
 - [**Dunst**](https://github.com/Rufi512/dotfiles/tree/main/.config/dunst)
+- [**Eww**](https://github.com/Rufi512/dotfiles/tree/main/.config/eww)
 - [**Nvim**](https://github.com/Rufi512/dotfiles/tree/main/.config/nvim)
 - [**Openbox**](https://github.com/Rufi512/dotfiles/tree/main/.config/openbox)
 - [**Picom**](https://github.com/Rufi512/dotfiles/tree/main/.config/picom)
@@ -16,5 +17,3 @@ Hello! this is my dotfiles, if you want you can take a look and take something t
 - [**Kitty**](https://github.com/Rufi512/dotfiles/tree/main/.config/kitty)
 - [**Thunar**](https://github.com/Rufi512/dotfiles/tree/main/.config/thunar)
 - [**Neofetch**](https://github.com/Rufi512/dotfiles/tree/main/.config/neofetch)
-
-

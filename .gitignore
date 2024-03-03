@@ -3,4 +3,5 @@
 !.config
 !.profile
 !README.md
+.vscode
 __pycache__
