@@ -41,7 +41,7 @@ tooltip label {
 
 
 /** Bar ***********************************/
-.dockbox {
+.dockbox, .dockbox_h, .player_box {
 	background-color: #13181f;
 	border:2px solid white;
 	border-radius: 10px;
@@ -51,16 +51,31 @@ tooltip label {
 }
 
 
+
+.dockbox_h, .player_box{
+	background: rgba(39, 48, 73, 0.9);
+	padding-bottom: 10px;
+}
 /** Weather ********************************************/
 .weatherbox {
-	margin : 0px 0px 0px 0px;
+	margin : 0px 0px 0px -8px;
 	padding-right: 10px;
 }
 
+
 .weathericon {
 	font-family: monospace;
-	font-size : 20px;
+	background-size: 36px;	
+	background-position: center;
+	background-repeat: no-repeat;
 	font-weight : normal;
+}
+
+.forecast_icon{
+	background-size: 64px;	
+	background-position: center;
+	background-repeat: no-repeat;
+	margin-bottom: -10px;
 }
 
 .weathertemp {
@@ -100,6 +115,7 @@ tooltip label {
 
 .song_title{
 	padding-right: 10px;
+	padding-left: 5px;
 	font-size: 14px;
 	border-right: 2px solid black;
 }
@@ -131,3 +147,115 @@ tooltip label {
 	font-weight: bold;
 	margin-left: -20px;
 }
+
+
+/*forecast popup*/
+
+.box_fc{
+	padding: 20px;
+}
+
+.box_fc .weathertemp{
+	font-size: 40;
+	color: #b3ccfa;
+	margin-top: 20px;
+}
+
+.box_fc .forecast_icon{
+	font-size: 40;
+}
+
+.box_pr, .box_hu{
+	padding: 35px;
+}
+
+.box_pr{
+	padding: 0px;
+}
+
+.box_hu_pr{
+	margin-bottom: 25px;
+}
+
+.box_pr .pr_icon{
+	background-size: 46px;	
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.box_pr .pr_text{
+	color: rgb(216, 222, 252);
+	font-size: 16;
+	font-weight: bold;
+}
+
+.quote_text{
+	color: rgb(216, 222, 252);
+	font-size: 16;
+	padding: 10px;
+}
+
+.date_text{
+	font-size: 18;
+	font-weight: bold;
+	color: white;
+	margin-top: 8px;
+}
+
+.box_quote{
+	padding: 0 10px;
+}
+
+
+/*Player info*/
+
+.player_box{
+	padding: 20px;
+}
+
+.player_info{
+	padding-left: 15px;
+}
+
+.player_art{
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 3px;
+}
+
+.player_title{
+	font-size: 16px;
+	color: white;
+	font-weight: bold;
+}
+
+.player_artist{
+	margin-top: 10px;
+	font-size: 15px;
+	color: rgb(163, 206, 255);
+}
+
+.player_d .song_time_current{
+	color:rgb(190, 172, 255);
+	margin-top: 10px;
+	margin-bottom: -20px;
+	font-size: 15;
+}
+
+.box_bar{
+	margin-bottom: 5px;
+}
+
+progressbar *{
+	background: #b3ccfa;
+	border-radius: 50px;
+}
+
+progressbar > trough{
+	border-radius: 50px;
+	min-width:100px;
+	color: #fde3c0;
+	background: #495574;
+}
+

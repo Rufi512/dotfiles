@@ -9,17 +9,23 @@
 (defpoll WMS :interval "1s" `wmctrl -d | grep '*' | cut -d ' ' -f13`)
 
 ;; Time vars
-(defpoll TIME :interval "1s" `date +\"%I:%M %p\ /"`)
-(defpoll DATE :interval "1s" `date +\"%A - %d / %B\"`)
+(defpoll TIME :interval "1s" `date +\"%I:%M:%S %p\ "`)
+(defpoll DATE :interval "1s" `date +\"%A - %d / %B - %Y \"`)
 
 ;; Weather vars
 (defpoll ICON :interval "25m" `scripts/weather_info --icon`)
 (defpoll TEMP :interval "25m" `scripts/weather_info --temp`)
 (defpoll HEX :interval "25m" `scripts/weather_info --hex`)
 (defpoll CITY :interval "25m" `scripts/weather_info --city`)
+(defpoll QUOTE :interval "25m" `scripts/weather_info --quote`)
+(defpoll HUMIDITY :interval "25m" `scripts/weather_info --humidity`)
+(defpoll PRESSURE :interval "25m" `scripts/weather_info --pressure`)
+(defvar humidity_icon  `images/icons/weather/humidity.png`)
+(defvar pressure_icon  `images/icons/weather/pressure.png`)
 ;; Music vars
 
 (defvar music_reveal false)
+(defvar forecast_details false)
 
 ;; Mail vars
 (defpoll MAILS :interval "5m" `scripts/mails`)
@@ -34,7 +40,7 @@
 (defpoll song_length :interval "1s"  "~/.config/eww/scripts/music_info --ltime")
 (defpoll status_button :interval "1s"  "~/.config/eww/scripts/music_info --status")
 (defpoll cover_art :interval "1s"  "~/.config/eww/scripts/music_info --cover")
-
+(defpoll percent :interval "1s"  "~/.config/eww/scripts/music_info --percent")
 ;; ** Widgets *************************************************************************
 
 
@@ -60,28 +66,73 @@
 
 ;;forecast indicator
 (defwidget forecast[]
-		(box :class "dockbox" 
-			(box :class "quoteBox" :orientation "h" :valign "center"  :spacing 0 :space-evenly "false" :vexpand "false" :hexpand "false"
-				(label :class "quoteText" :text CITY) (label :class "quoteText" :text "-"))
-		
-			(box :class "weatherbox" :orientation "h" :spacing 0 :valign "center" :halign "end" :space-evenly "false" :vexpand "false" :hexpand "false"
-				(label :class "weathericon" :style "color: ${HEX};" :text ICON)
-				(label :class "weathertemp" :text TEMP))
-		)
+  (eventbox
+    :onclick "eww open forecast_info"
+      (box :class "dockbox" 
+      (box :class "quoteBox" :orientation "h" :valign "center"  :spacing 0 :space-evenly "false" :vexpand "false" :hexpand "false"
+        (label :class "quoteText" :text CITY) (label :class "quoteText" :text "-"))
+    
+      (box :class "weatherbox" :orientation "h" :spacing 0 :valign "center" :halign "end" :space-evenly "false" :vexpand "false" :hexpand "false"
+        (box :class "weathericon" :width 36 :height 36 :style "background-image: url('${ICON}');")
+        (label :class "weathertemp" :text TEMP))
+    )
+  )
+)
+
+;; forecast details
+
+(defwidget forecast_info []
+
+  (revealer :reveal "true"
+    (eventbox
+      :onhoverlost "eww close forecast_info"
+        (box :class "dockbox_h" :active "false" :orientation "v" :halign "center" :space-evenly "false"
+          (box :class "box_fc" :orientation "v" :valign "start"  :halign "center" :space-evenly "false" 
+            (box :class "forecast_icon" :height 70 :width 70 :halign "center" :style "background-image: url('${ICON}');")
+            (label :class "weathertemp" :text TEMP)
+          )
+
+          (box :class "box_hu_pr" :orientation "h" :valign "start"  :halign "center" :space-evenly "false" 
+            (box :class "box_pr" :orientation "v" :space-evenly "false" :width 150
+              (box :class "pr_icon" :height 70 :width 70 :vexpand "false" :hexpand "false" :style "background-image: url('${humidity_icon}');")
+              (label :class "pr_text" :text "${PRESSURE} hPa")
+            )
+
+            (box :class "box_pr box_hu" :orientation "v" :space-evenly "false" :width 150
+              (box :class "pr_icon" :height 70 :width 70 :vexpand "false" :hexpand "false" :style "background-image: url('${pressure_icon}');")
+              (label :class "pr_text" :text "${HUMIDITY} %")
+            )
+
+          )
+
+          (box :class "box_quote" :orientation "v"  :space-evenly "false"
+          (label :class "date_text"  :width 400  :valign "center" :halign "center" :text "${TIME}")
+          (label :class "date_text"  :width 400  :valign "center" :halign "center" :text "${DATE}")
+        )
+
+          (box :class "box_quote" :orientation "v"  :space-evenly "false"
+            (label :class "quote_text" :wrap "true" :justify "center" :width 400  :valign "center" :halign "center" :text "${QUOTE}")
+          )
+          
+      )
+      )
+  )
+
 )
 
 ;;  Music 
 (defwidget music [] 
 
   (eventbox
+    :onclick "eww open player"
     :onscroll "if [ '{}' == 'up' ]; then amixer -D pulse sset Master '1%+'; else amixer -D pulse sset Master '1%-'; fi;"
     (box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
     (box :class "song_cover_art" :height 40 :width 40 :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
-    (box  :vexpand "false" :space-evenly "false" :hexpand "false" 
-      (label :class "song_title" :tooltip song  :show-truncated "true" :limit-width 35 :width 330 :text song)
+    (box  :vexpand "false" :space-evenly "false" :hexpand "false" :width 330 
+      (label :class "song_title" :width 330   :show-truncated "true" :limit-width 35 :text song)
     )
-        (box :vexpand "false" :orientation "h" :hexpand "false" :width 200  :space-evenly "false" :halign "end"
-          (button :class "song_btn_play" :width 30 :hexpand "false" :onclick "~/.config/eww/scripts/music_info --toggle" :style "background-image: url('${status_button}')")
+        (box :vexpand "false" :orientation "h" :hexpand "false" :width 150 :space-evenly "false" :halign "end"
+          (button :class "song_btn_play" :cursor "pointer" :width 30 :hexpand "false" :onclick "~/.config/eww/scripts/music_info --toggle" :style "background-image: url('${status_button}')")
           (label :class "song_time_current" :text current_status)
           (label :width 20 :limit-width 4 :text "-")
           (label :class "song_time_length" :text song_length)
@@ -89,6 +140,35 @@
     )
   )		 
 
+)
+
+
+;; Player
+
+(defwidget player []
+
+  (revealer :reveal "true"
+    (eventbox
+      :onhoverlost "eww close player"
+        (box :class "player_box" :orientation "h" :halign "start" :space-evenly "start" :valign "start"
+        (
+          box :class "player_art" :width 136 :height 136 :style "background-image: url('${cover_art}')"
+        )
+        (
+          box :class "player_info" :width 380 :orientation "v" :space-evenly "false"  :valign "center"
+          (label :class "player_title"  :wrap "true" :justify "center" :width 380 :text song :halign "start" :valign "start" )
+          (box :class "player_d" :orientation "v" :valign "center"
+            (label :class "song_time_current" :text "${current_status} - ${song_length}" :valign "center" )
+            (box :class "box_bar" (progress  :value percent))
+
+            (label :class "player_artist" :width 380 :wrap "true"  :text "- ${song_artist}" :halign "end" :valign "end")
+          )
+
+        )
+
+      ) 
+    )
+  )
 )
 
 ;;system
@@ -101,6 +181,13 @@
   (label :class "email_text"  :text MAILS)
 
   ))
+
+)
+
+(defwidget spacer []
+  (eventbox
+
+  )
 
 )
 
@@ -141,6 +228,53 @@
 		:windowtype "dock"
 		:wm-ignore false
 (forecast))
+
+;; forecast info
+
+(defwindow forecast_info 
+  :monitor 0
+  :geometry (geometry :x "10px"
+            :y "50px"
+            :width "0px"
+            :height "370px"
+            :padding "10px"
+            :anchor "top left")
+  :stacking "fg"
+  :reserve (struts :distance "0px" :side "top")
+  :focusable "false"
+
+(forecast_info))
+
+;; player info
+
+(defwindow player 
+  :monitor 0
+  :geometry (geometry :x "0px"
+            :y "50px"
+            :width "550px"
+            :height "200px"
+            :padding "10px"
+            :anchor "top center")
+  :stacking "fg"
+  :reserve (struts :distance "0px" :side "top")
+  :focusable "false"
+
+(player))
+
+
+(defwindow spacer 
+    :monitor 0
+    :geometry (geometry :x "0px"
+              :y "0px"
+              :width "0px"
+              :height "0px"
+              :padding "0px"
+              :anchor "top left")
+    :stacking "fg"
+    :reserve (struts :distance "50px" :side "top")
+    :focusable "false"
+  
+  (spacer))
 
 ;; music
 (defwindow music

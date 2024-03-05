@@ -15,7 +15,10 @@ run_eww() {
 		   weather \
 		   music \
 		   forecast \
-		   system
+		   system \
+		   forecast_info \
+		   player \
+		   spacer
 
 }
 

@@ -9,6 +9,7 @@ TITLE="$(playerctl metadata --format "{{ title }}")"
 ARTIST="$(playerctl metadata --format "{{ artist }}")"
 LENGTH="$(playerctl metadata --format "{{ duration(mpris:length) }}")"
 CURRENT="$(playerctl metadata --format "{{ duration(position) }}")"
+
 ## Get status
 get_status() {
 	if [[ $STATUS == "Playing" ]]; then
@@ -58,10 +59,23 @@ get_time_length() {
 ## Get cover
 get_cover() {
 	if [[ -z "$TITLE" ]]; then
-		echo "images/icons/music/off.png"
+		echo "images/icons/music/off_player.png"
 	else
 		echo "$COVER"
 	fi
+}
+
+## Get percent
+
+get_percent(){
+	PLAYER_LENGTH="$(playerctl metadata --format "{{ mpris:length }}")"
+	PLAYER_CURRENT="$(playerctl metadata --format "{{ position }}")"
+	PERCENT=$((($PLAYER_CURRENT * 100) / $PLAYER_LENGTH))
+	if [[ -z "$LENGTH" ]]; then
+		echo "0"
+	else
+		echo "$PERCENT"
+	fi	
 }
 
 ## Execute accordingly
@@ -77,6 +91,10 @@ elif [[ "$1" == "--ltime" ]]; then
 	get_time_length
 elif [[ "$1" == "--cover" ]]; then
 	get_cover
+elif [[ "$1" == "--cover_player" ]]; then
+	get_cover_player
+elif [[ "$1" == "--percent" ]]; then
+	get_percent
 elif [[ "$1" == "--toggle" ]]; then
 	playerctl play-pause
 fi

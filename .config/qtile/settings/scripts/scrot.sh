@@ -17,7 +17,7 @@ function call_scrot() {
 	if [[ -n "$full" ]]; then
 		scrot "$file"
 		else
-		scrot -q 100 -s "$file"
+	  scrot -fs "$file"
 	fi
 	wait
 	notify_view

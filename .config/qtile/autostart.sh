@@ -2,4 +2,4 @@
 
 eww kill
 
-eww open music && eww open forecast && eww open system
+eww open spacer && eww open music && eww open forecast && eww open system

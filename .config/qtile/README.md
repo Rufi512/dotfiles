@@ -2,10 +2,10 @@
 The bar will appear on the screen with higher resolution
 <img src ="https://github.com/Rufi512/dotfiles/blob/main/.config/qtile/qtile.png"/>
 
-You need to have nerd-fonts and MesloLGS NF installed to see the icons
+you need to have nerd-fonts installed to see the icons
 
 ```
-yay -S nerd-fonts-ubuntu-mono ttf-meslo-nerd-font-powerlevel10k 
+yay -S nerd-fonts-ubuntu-mono
 ```
 
 | Shortcut Key | App |
@@ -17,15 +17,13 @@ yay -S nerd-fonts-ubuntu-mono ttf-meslo-nerd-font-powerlevel10k
 | mod + m  | Open Thunderbird  |
 | mod + l  | Open Rofi drun  |
 | mod + p  | Open Rofi run  |
-| mod + p  | Open Rofi calc |
-| mod + x  | Open Rofi window  |
 | mod + t  | Open Telegram  |
 | mod + control + o  | Redshift 3600K  |
 | mod + control + p  | Redshift Off  |
 | mod + control + 0  | Increase Volume  |
 | mod + control + 9  | Decrease Volume  |
 
-Scrot is used to take a screenshot, you need to specify the path to save the images in keys.py lines 20 and 21, these will be saved following the format [Current date - weekday name - current time]
+Scrot is used to take a screenshot, you need to specify the path to save the images in keys.py lines 18 and 19, these will be saved following the format [Current date - weekday name - current time]
 
 
 | Shortcut Key | scrot |
