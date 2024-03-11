@@ -33,11 +33,11 @@ get_weather_data() {
 		weather_humidity=`echo "$weather" | jq ".main.humidity" | cut -d "." -f 1`
 		#Big long if statement of doom
 		if [ "$weather_icon_code" == "50d"  ]; then
-			weather_icon="images/icons/weather/icons/mist.png "
+			weather_icon="images/icons/weather/icons/mist.png"
 			weather_quote="Forecast says it's misty \nMake sure you don't get lost on your way..."
 			weather_hex="#84afdb"
 		elif [ "$weather_icon_code" == "50n"  ]; then
-			weather_icon="images/icons/weather/icons/mist.png "
+			weather_icon="images/icons/weather/icons/mist.png"
 			weather_quote="Forecast says it's a misty night \nDon't go anywhere tonight or you might get lost..."
 			weather_hex="#84afdb"
 		elif [ "$weather_icon_code" == "01d"  ]; then
@@ -65,7 +65,7 @@ get_weather_data() {
 			weather_quote="It's a cloudy night \nHow about some hot chocolate and a warm bed?"
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "04d"  ]; then
-			weather_icon="images/icons/weather/icons/clouds.png "
+			weather_icon="images/icons/weather/icons/clouds.png"
 			weather_quote="It's  cloudy, sort of gloomy \nYou'd better get a book to read..."
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "04n"  ]; then
@@ -77,7 +77,7 @@ get_weather_data() {
 			weather_quote="It's rainy, it's a great day! \nGet some ramen and watch as the rain falls..."
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "09n"  ]; then
-			weather_icon="images/icons/weather/icons/rainy.png "
+			weather_icon="images/icons/weather/icons/rainy.png"
 			weather_quote=" It's gonna rain tonight it seems \nMake sure your clothes aren't still outside..."
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "10d"  ]; then
@@ -85,7 +85,7 @@ get_weather_data() {
 			weather_quote="It's rainy, it's a great day! \nGet some ramen and watch as the rain falls..."
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "10n"  ]; then
-			weather_icon="images/icons/weather/icons/rainy.png "
+			weather_icon="images/icons/weather/icons/rainy.png"
 			weather_quote=" It's gonna rain tonight it seems \nMake sure your clothes aren't still outside..."
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "11d"  ]; then
@@ -109,11 +109,11 @@ get_weather_data() {
 			weather_quote="Forecast says it's misty \nMake sure you don't get lost on your way..."
 			weather_hex="#84afdb"
 		elif [ "$weather_icon_code" == "40n"  ]; then
-			weather_icon="images/icons/weather/icons/mist.png "
+			weather_icon="images/icons/weather/icons/mist.png"
 			weather_quote="Forecast says it's a misty night \nDon't go anywhere tonight or you might get lost..."
 			weather_hex="#84afdb"
 		else 
-			weather_icon="images/icons/weather/icons/clouds.png "
+			weather_icon="images/icons/weather/icons/clouds.png"
 			weather_quote="Sort of odd, I don't know what to forecast \nMake sure you have a good time!"
 			weather_hex="#adadff"
 		fi
@@ -127,9 +127,11 @@ get_weather_data() {
 		echo "$weather_humidity" > ${cache_weather_humidity}
 	else
 		echo "Weather Unavailable" > ${cache_weather_stat}
-		echo " " > ${cache_weather_icon}
+		echo "images/icons/weather/icons/error.png" > ${cache_weather_icon}
 		echo -e "Ah well, no weather huh? \nEven if there's no weather, it's gonna be a great day!" > ${cache_weather_quote}
-		echo "-" > ${cache_weather_degree}
+		echo "¿?" > ${cache_weather_degree}
+		echo "¿?" > ${cache_weather_pressure}
+		echo "¿?" > ${cache_weather_humidity}
 	fi
 }
 

@@ -13,13 +13,13 @@
 (defpoll DATE :interval "1s" `date +\"%A - %d / %B - %Y \"`)
 
 ;; Weather vars
-(defpoll ICON :interval "25m" `scripts/weather_info --icon`)
 (defpoll TEMP :interval "25m" `scripts/weather_info --temp`)
-(defpoll HEX :interval "25m" `scripts/weather_info --hex`)
-(defpoll CITY :interval "25m" `scripts/weather_info --city`)
-(defpoll QUOTE :interval "25m" `scripts/weather_info --quote`)
-(defpoll HUMIDITY :interval "25m" `scripts/weather_info --humidity`)
-(defpoll PRESSURE :interval "25m" `scripts/weather_info --pressure`)
+(defpoll ICON :interval "1s" `scripts/weather_info --icon`)
+(defpoll HEX :interval "1s" `scripts/weather_info --hex`)
+(defpoll CITY :interval "1s" `scripts/weather_info --city`)
+(defpoll QUOTE :interval "1s" `scripts/weather_info --quote`)
+(defpoll HUMIDITY :interval "1s" `scripts/weather_info --humidity`)
+(defpoll PRESSURE :interval "1s" `scripts/weather_info --pressure`)
 (defvar humidity_icon  `images/icons/weather/humidity.png`)
 (defvar pressure_icon  `images/icons/weather/pressure.png`)
 ;; Music vars
