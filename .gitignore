@@ -3,5 +3,6 @@
 !.config
 !.profile
 !README.md
+!.zshrc
 .vscode
 __pycache__
