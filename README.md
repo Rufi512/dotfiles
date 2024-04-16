@@ -23,6 +23,6 @@ Hello! this is my dotfiles, if you want you can take a look and take something t
 
 ```
 
-yay -S alacritty kitty ranger openbox obmenu-generator qtile picom-ftlabs-git thunar neofetch tint2 rofi eww dunst  
+yay -S alacritty kitty ranger openbox obmenu-generator qtile picom-ftlabs-git thunar neofetch tint2 rofi eww dunst python-opencv playerctl  
 ```
 
