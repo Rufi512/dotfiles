@@ -41,7 +41,7 @@ tooltip label {
 
 
 /** Bar ***********************************/
-.dockbox, .dockbox_h, .player_box {
+.dockbox, .dockbox_h{
 	background-color: #13181f;
 	border:2px solid white;
 	border-radius: 10px;
@@ -50,9 +50,18 @@ tooltip label {
 	padding: 0;
 }
 
+.player_box{
+	border-color: transparent;
+	border-radius: 10px;
+	box-shadow: none;
+	color:#000;
+	padding: 0;
+	transition: all 0.5s;
+}
 
 
-.dockbox_h, .player_box{
+
+.dockbox_h{
 	background: rgba(39, 48, 73, 0.9);
 	padding-bottom: 10px;
 }
@@ -210,45 +219,57 @@ tooltip label {
 /*Player info*/
 
 .player_box{
-	padding: 20px;
+	padding: 0px 0px;
+}
+
+.player_name{
+	font-size: 12px;
+	opacity: 0.8;
+	font-weight: bold;
+	transition: all 0.3s ease;
 }
 
 .player_info{
-	padding-left: 15px;
+	padding-top: 10px;
+	padding-left: 8px;
+	padding-right: 15px;
+	padding-bottom: 25px;
 }
 
 .player_art{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	border-radius: 3px;
+	border-radius: 0px 5px 5px 0px;
 }
 
 .player_title{
+	padding-top: 3px;
 	font-size: 16px;
 	color: white;
 	font-weight: bold;
 }
 
 .player_artist{
-	margin-top: 10px;
-	font-size: 15px;
+	padding-top: 3px;
+	font-size: 13px;
 	color: rgb(163, 206, 255);
+	opacity: 0.9;
 }
 
 .player_d .song_time_current{
-	color:rgb(190, 172, 255);
-	margin-top: 10px;
-	margin-bottom: -20px;
+	padding-top: 10px;
 	font-size: 15;
+	margin-bottom: -20px;
 }
 
 .box_bar{
-	margin-bottom: 5px;
+	padding-top: 10px;
+	margin-bottom: 0px;
 }
 
 progressbar *{
-	background: #b3ccfa;
+	background: #e5e5eb;
 	border-radius: 50px;
 }
 
@@ -256,6 +277,6 @@ progressbar > trough{
 	border-radius: 50px;
 	min-width:100px;
 	color: #fde3c0;
-	background: #495574;
+	background: #adadad;
 }
 

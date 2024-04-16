@@ -9,7 +9,6 @@ Config based from https://github.com/adi1090x/widgets
 
 3. **Forecast**: the forecast is connected from the openweathermap api, make sure to set the API_KEY and the CITY_ID
 
-
 Your can set the params necessary to use how enviroment variable in your .xprofile
 
 These are the ones used
@@ -22,3 +21,11 @@ These are the ones used
 | CITY_WEATHER  | Your city id from openweathermap|
 
 <img src="https://github.com/Rufi512/dotfiles/blob/main/.config/eww/screenshot.png" alt="eww"/>
+
+**Player**
+
+<img src="https://github.com/Rufi512/dotfiles/blob/main/.config/eww/player.png" alt="eww-player"/>
+
+## Notes
+
+The player uses a script to get the most dominant colors of the cover image only when you click to open, the contrast colors can sometimes be displayed incorrectly, is something to fix :p

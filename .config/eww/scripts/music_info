@@ -2,6 +2,10 @@
 # scripts by adi1090x
 
 ## Get data
+cache_dir="$HOME/.cache/eww/music_player"
+cache_background="${cache_dir}/background_color"
+cache_indicator="${cache_dir}/indicator_color"
+text_color="${cache_dir}/text_color"
 STATUS="$(playerctl status)"
 COVER="$(playerctl metadata --format "{{ mpris:artUrl }}")"
 MUSIC_DIR="$HOME/Music"
@@ -9,6 +13,15 @@ TITLE="$(playerctl metadata --format "{{ title }}")"
 ARTIST="$(playerctl metadata --format "{{ artist }}")"
 LENGTH="$(playerctl metadata --format "{{ duration(mpris:length) }}")"
 CURRENT="$(playerctl metadata --format "{{ duration(position) }}")"
+PLAYER="$(playerctl metadata --format "{{playerName}}")"
+## Get player name
+get_player() {
+	if [[ -z "$PLAYER" ]]; then
+		echo "-"
+	else
+		echo "$PLAYER"
+	fi
+}
 
 ## Get status
 get_status() {
@@ -78,9 +91,26 @@ get_percent(){
 	fi	
 }
 
+## Get Colors
+get_color_1(){
+	cat "$text_color"
+}
+
+get_color_2(){
+	cat "$cache_background"
+}
+
+get_color_3(){
+	cat "$cache_indicator"
+}
+
+
+
 ## Execute accordingly
 if [[ "$1" == "--song" ]]; then
 	get_song
+elif [[ "$1" == "--player" ]]; then
+	get_player
 elif [[ "$1" == "--artist" ]]; then
 	get_artist
 elif [[ "$1" == "--status" ]]; then
@@ -95,6 +125,12 @@ elif [[ "$1" == "--cover_player" ]]; then
 	get_cover_player
 elif [[ "$1" == "--percent" ]]; then
 	get_percent
+elif [[ "$1" == "--color_text" ]]; then
+	get_color_1
+elif [[ "$1" == "--color_background" ]]; then
+	get_color_2
+elif [[ "$1" == "--color_indicator" ]]; then
+	get_color_3
 elif [[ "$1" == "--toggle" ]]; then
 	playerctl play-pause
 fi
