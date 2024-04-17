@@ -178,7 +178,7 @@
         )
         (
           box :class "player_art" :width 180 :style "min-height:180px; background:linear-gradient(to left, rgba(${background_color},0) 10%,
-            rgba(${background_color},1) 90%), url('${cover_art}'); background-size: cover; "
+            rgba(${background_color},1) 90%), url('${cover_art}'); background-size: cover; background-repeat: no-repeat; background-position: center; "
         )
       ) 
     )
