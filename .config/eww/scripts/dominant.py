@@ -3,37 +3,53 @@ import cv2
 import numpy as np
 import subprocess
 import os
+import re
 from pathlib import Path
+
+directory = str(Path.home()) + "/.cache/eww/music_player"
+
+def defaultData():
+    with open(directory + "/song_name", "w") as outfile:
+        outfile.write("")
+
+    with open(directory + "/background_color", "w") as outfile:
+        outfile.write("9,7,16")
+
+    with open(directory + "/text_color", "w") as outfile:
+        outfile.write("255,255,255")
+
+    with open(directory + "/indicator_color", "w") as outfile:
+        outfile.write("199,201,217")
+
 def main():
+    music_player = subprocess.run('playerctl metadata',shell=True,stdout=subprocess.PIPE, text=True).stdout
+    if(music_player == '' or music_player == 'No player could handle this command'):
+        return defaultData()
+
+    # Verify if title is equal to the data
+    name_track = subprocess.run("playerctl metadata --format '{{title}}'",shell=True,stdout=subprocess.PIPE, text=True).stdout
+    image_track = subprocess.run("playerctl metadata --format '{{mpris:artUrl}}'",shell=True,stdout=subprocess.PIPE, text=True).stdout.strip()
+
+    if(os.path.isfile(directory + "/song_name")):
+        file = open(directory + "/song_name", "r")
+        content = file.read()
+
+    if content == name_track:
+        return
+
     try:
-        music_player = subprocess.run('playerctl status --format "{{ uc(status) }}"',shell=True,stdout=subprocess.PIPE, text=True).stdout
-        if(music_player == ''):
-            return
-        
-        directory = str(Path.home()) + "/.cache/eww/music_player"
-
-        # Verify if title is equal to the data
-        name_track = subprocess.run("playerctl metadata --format '{{title}}'",shell=True,stdout=subprocess.PIPE, text=True).stdout
-        image_track = subprocess.run("playerctl metadata --format '{{mpris:artUrl}}'",shell=True,stdout=subprocess.PIPE, text=True).stdout.strip()
-
-        if(os.path.isfile(directory + "/song_name")):
-            file = open(directory + "/song_name", "r")
-            content = file.read()
-
-        if content == name_track:
-            return
-
         # Read the image path
-
-        w_download = f"wget --adjust-extension {image_track} -O {directory}/image"
-
-        print(w_download)
-        subprocess.run(w_download, shell=True)
-
-        name, extension = os.path.splitext(directory + "/image")
-        print("Name: ", name)
-        print("File Extension: ", extension)
-        path_image = f"{directory}/image" 
+        # Check if the image is obtained from file://
+        is_file = re.match(r"(file)://", image_track)
+        print(is_file)
+        if is_file:
+            split_path = image_track.split('file://',1)[1]
+            path_image = split_path
+        else:
+            w_download = f"wget --adjust-extension {image_track} -O {directory}/image"
+            subprocess.run(w_download, shell=True)
+            path_image = f"{directory}/image" 
+        
         image = cv2.imread(path_image, cv2.IMREAD_COLOR)
 
         #Display image
@@ -102,16 +118,6 @@ def main():
         with open(directory + "/indicator_color", "w") as outfile:
             outfile.write(colors[(darkest_color_position - 1 + len(colors)) % len(colors)])
     except:
-        with open(directory + "/song_name", "w") as outfile:
-            outfile.write("")
-
-        with open(directory + "/background_color", "w") as outfile:
-            outfile.write("9,7,16")
-
-        with open(directory + "/text_color", "w") as outfile:
-            outfile.write("255,255,255")
-
-        with open(directory + "/indicator_color", "w") as outfile:
-            outfile.write("59,59,63")
+        defaultData()
 
 main()
