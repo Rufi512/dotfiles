@@ -22,6 +22,11 @@ These are the ones used
 
 <img src="https://github.com/Rufi512/dotfiles/blob/main/.config/eww/screenshot.png" alt="eww"/>
 
+
+**Weather**
+
+<img src="https://github.com/Rufi512/dotfiles/blob/main/.config/eww/weather.png" alt="eww-weather"/>
+
 **Player**
 
 <img src="https://github.com/Rufi512/dotfiles/blob/main/.config/eww/player.png" alt="eww-player"/>

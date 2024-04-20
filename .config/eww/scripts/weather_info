@@ -3,6 +3,7 @@
 ## Collect data
 cache_dir="$HOME/.cache/eww/weather"
 cache_weather_stat=${cache_dir}/weather-stat
+cache_weather_name=${cache_dir}/weather-name
 cache_weather_degree=${cache_dir}/weather-degree
 cache_weather_quote=${cache_dir}/weather-quote
 cache_weather_hex=${cache_dir}/weather-hex
@@ -10,6 +11,10 @@ cache_weather_icon=${cache_dir}/weather-icon
 cache_weather_city=${cache_dir}/weather-city
 cache_weather_pressure=${cache_dir}/weather-pressure
 cache_weather_humidity=${cache_dir}/weather-humidity
+cache_weather_feels_like=${cache_dir}/weather-feels-like
+cache_weather_country=${cache_dir}/weather-country
+cache_weather_wind_speed=${cache_dir}/weather-wind-speed
+cache_weather_wind_deg=${cache_dir}/weather-wind-deg
 ## Weather data
 KEY=$API_KEY_WEATHER
 ID=$CITY_WEATHER
@@ -31,6 +36,10 @@ get_weather_data() {
 		weather_city=`echo "$weather" | jq -r ".name" | head -1 | sed -e "s/\b\(.\)/\u\1/g"`
 		weather_pressure=`echo "$weather" | jq ".main.pressure" | cut -d "." -f 1`
 		weather_humidity=`echo "$weather" | jq ".main.humidity" | cut -d "." -f 1`
+		weather_feels_like=`echo "$weather" | jq ".main.feels_like" | cut -d "." -f 1`
+		weather_country=`echo "$weather" | jq ".sys.country" | head -1 |  sed 's/\"//g'`
+		weather_wind_speed=`echo "$weather" | jq ".wind.speed" | cut -d "." -f 1`
+		weather_wind_deg=`echo "$weather" | jq ".wind.deg" | cut -d "." -f 1`
 		#Big long if statement of doom
 		if [ "$weather_icon_code" == "50d"  ]; then
 			weather_icon="images/icons/weather/icons/mist.png"
@@ -125,6 +134,11 @@ get_weather_data() {
 		echo "$weather_city" > ${cache_weather_city}
 		echo "$weather_pressure" > ${cache_weather_pressure}
 		echo "$weather_humidity" > ${cache_weather_humidity}
+		echo "$weather_feels_like""°C" > ${cache_weather_feels_like}
+		echo "$weather_name" > ${cache_weather_name}
+		echo "$weather_country" > ${cache_weather_country}
+		echo "$weather_wind_speed" > ${cache_weather_wind_speed}
+		echo "$weather_wind_deg" > ${cache_weather_wind_deg}
 	else
 		echo "Weather Unavailable" > ${cache_weather_stat}
 		echo "images/icons/weather/icons/error.png" > ${cache_weather_icon}
@@ -132,6 +146,11 @@ get_weather_data() {
 		echo "¿?" > ${cache_weather_degree}
 		echo "¿?" > ${cache_weather_pressure}
 		echo "¿?" > ${cache_weather_humidity}
+		echo "¿?" > ${cache_weather_feels_like}
+		echo "¿?" > ${cache_weather_name}
+		echo "¿?" > ${cache_weather_country}
+		echo "¿?" > ${cache_weather_wind_speed}
+		echo "¿?" > ${cache_weather_wind_deg}
 	fi
 }
 
@@ -148,11 +167,21 @@ elif [[ "$1" == "--hex" ]]; then
 elif [[ "$1" == "--stat" ]]; then
 	cat ${cache_weather_stat}
 elif [[ "$1" == "--city" ]]; then
-	 cat ${cache_weather_city}
+	cat ${cache_weather_city}
+elif [[ "$1" == "--feels_like" ]]; then
+	cat ${cache_weather_feels_like}
+elif [[ "$1" == "--name" ]]; then
+	cat ${cache_weather_name}
+elif [[ "$1" == "--country" ]]; then
+	cat ${cache_weather_country}
 elif [[ "$1" == "--pressure" ]]; then
 	 cat ${cache_weather_pressure}
 elif [[ "$1" == "--humidity" ]]; then
 	 cat ${cache_weather_humidity}
+elif [[ "$1" == "--wind_speed" ]]; then
+	 cat ${cache_weather_wind_speed}
+elif [[ "$1" == "--wind_deg" ]]; then
+	 cat ${cache_weather_wind_deg}
 elif [[ "$1" == "--quote" ]]; then
 	cat ${cache_weather_quote} | head -n1
 elif [[ "$1" == "--quote2" ]]; then

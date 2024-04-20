@@ -60,6 +60,9 @@ tooltip label {
 }
 
 
+.quoteBox{
+	margin-right: -10px;
+}
 
 .dockbox_h{
 	background: rgba(39, 48, 73, 0.9);
@@ -67,7 +70,7 @@ tooltip label {
 }
 /** Weather ********************************************/
 .weatherbox {
-	margin : 0px 0px 0px -8px;
+	margin : 0px 0px 0px -10px;
 	padding-right: 10px;
 }
 
@@ -101,7 +104,42 @@ tooltip label {
 	font-size: 14px;
 	font-weight: bold;
 	color:white;
-	margin : 0px 0px 0px 10px;
+	margin : 0px 0px 0px 7px;
+}
+
+.box_indicator{
+	background-color: #e5e5eb;
+	padding: 15px;
+	border-radius: 20px;
+	margin: 0 10px;
+	
+}
+
+.box_indicator .text_heading{
+	font-size: 14px;
+	color: #28325e;
+	font-weight: bold;
+	margin-bottom: 5px;
+
+}
+
+.box_indicator .icon{
+	background-repeat: no-repeat;
+	background-size: 34px;
+}
+
+.box_indicator .text_indicator{
+	color: #151515;
+	margin-top: 10px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.title_heading{
+	font-size: 18px;
+	color: #e5e5eb;
+	font-weight: bold;
+	margin: 5px 0;
 }
 
 /** MUSIC *************************************************/
@@ -161,17 +199,32 @@ tooltip label {
 /*forecast popup*/
 
 .box_fc{
+	margin-top: 10px;
 	padding: 20px;
+	margin-bottom: -45px;
 }
 
-.box_fc .weathertemp{
-	font-size: 40;
+.weather_desc, .weathertemp_desc{
+	font-size: 24px;
 	color: #b3ccfa;
-	margin-top: 20px;
+	margin-top: 0px;
+}
+
+.weathertemp_desc{
+	margin-top: -10px;
+	font-weight: bold;
+}
+
+.weather_desc{
+	margin-top: 0px;
+	font-size: 16px;
 }
 
 .box_fc .forecast_icon{
-	font-size: 40;
+	margin-top: -60px;
+	margin-right: 10px;
+	background-repeat: no-repeat;
+	background-size: 80px;
 }
 
 .box_pr, .box_hu{
@@ -187,7 +240,7 @@ tooltip label {
 }
 
 .box_pr .pr_icon{
-	background-size: 46px;	
+	background-size: 36px;	
 	background-position: center;
 	background-repeat: no-repeat;
 }
@@ -205,7 +258,7 @@ tooltip label {
 }
 
 .date_text{
-	font-size: 18;
+	font-size: 16;
 	font-weight: bold;
 	color: white;
 	margin-top: 8px;
@@ -213,6 +266,14 @@ tooltip label {
 
 .box_quote{
 	padding: 0 10px;
+}
+
+.time_icon{
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin-top: 8px;
+	margin-right: 8px;
 }
 
 

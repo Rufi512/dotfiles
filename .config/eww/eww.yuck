@@ -18,10 +18,23 @@
 (defpoll HEX :interval "1s" `scripts/weather_info --hex`)
 (defpoll CITY :interval "1s" `scripts/weather_info --city`)
 (defpoll QUOTE :interval "1s" `scripts/weather_info --quote`)
+(defpoll STAT :interval "1s" `scripts/weather_info --stat`)
+(defpoll NAME :interval "1s" `scripts/weather_info --name`)
+(defpoll COUNTRY :interval "1s" `scripts/weather_info --country `)
+(defpoll FEELS_LIKE :interval "1s" `scripts/weather_info --feels_like`)
 (defpoll HUMIDITY :interval "1s" `scripts/weather_info --humidity`)
 (defpoll PRESSURE :interval "1s" `scripts/weather_info --pressure`)
+(defpoll WIND_SPEED :interval "1s" `scripts/weather_info --wind_speed`)
+(defpoll WIND_DEG :interval "1s" `scripts/weather_info --wind_deg`)
 (defvar humidity_icon  `images/icons/weather/humidity.png`)
+(defvar clock_icon  `images/icons/weather/clock.png`)
+(defvar calendar_icon  `images/icons/weather/calendar.png`)
 (defvar pressure_icon  `images/icons/weather/pressure.png`)
+(defvar wind_speed_icon  `images/icons/weather/wind_speed.png`)
+(defvar wind_direction_icon  `images/icons/weather/wind_direction.png`)
+(defvar quote_icon  `images/icons/weather/quote.png`)
+(defvar pin_icon  `images/icons/weather/pin.png`)
+(defvar feel_icon  `images/icons/weather/feel.png`)
 ;; Music vars
 
 (defvar music_reveal false)
@@ -74,7 +87,8 @@
     :onclick "eww open forecast_info"
       (box :class "dockbox" 
       (box :class "quoteBox" :orientation "h" :valign "center"  :spacing 0 :space-evenly "false" :vexpand "false" :hexpand "false"
-        (label :class "quoteText" :text CITY) (label :class "quoteText" :text "-"))
+      (box :class "weathericon" :width 28 :height 28 :style "background-image: url('${pin_icon}'); background-size:24px; margin-right:-4px;")
+      (label :class "quoteText" :text "${COUNTRY} -") (label :class "quoteText" :text CITY) (label :class "quoteText" :style "margin-right:-8px;" :text "-"))
     
       (box :class "weatherbox" :orientation "h" :spacing 0 :valign "center" :halign "end" :space-evenly "false" :vexpand "false" :hexpand "false"
         (box :class "weathericon" :width 36 :height 36 :style "background-image: url('${ICON}');")
@@ -91,31 +105,66 @@
     (eventbox
       :onhoverlost "eww close forecast_info"
         (box :class "dockbox_h" :active "false" :orientation "v" :halign "center" :space-evenly "false"
-          (box :class "box_fc" :orientation "v" :valign "start"  :halign "center" :space-evenly "false" 
-            (box :class "forecast_icon" :height 70 :width 70 :halign "center" :style "background-image: url('${ICON}');")
-            (label :class "weathertemp" :text TEMP)
-          )
-
-          (box :class "box_hu_pr" :orientation "h" :valign "start"  :halign "center" :space-evenly "false" 
-            (box :class "box_pr" :orientation "v" :space-evenly "false" :width 150
-              (box :class "pr_icon" :height 70 :width 70 :vexpand "false" :hexpand "false" :style "background-image: url('${humidity_icon}');")
-              (label :class "pr_text" :text "${PRESSURE} hPa")
+          (box :class "box_fc" :orientation "h" :valign "start"  :halign "center" :space-evenly "false" 
+            (box :class "forecast_icon" :height 80 :width 85 :halign "start" :style "background-image: url('${ICON}');")
+            (box :class "box_ind" :orientation "v" :halign "start" :valign "start"
+              (label :class "weathertemp_desc" :halign "start" :text TEMP)
+              (label :class "weather_desc" :halign "start" :text STAT)
             )
-
-            (box :class "box_pr box_hu" :orientation "v" :space-evenly "false" :width 150
-              (box :class "pr_icon" :height 70 :width 70 :vexpand "false" :hexpand "false" :style "background-image: url('${pressure_icon}');")
-              (label :class "pr_text" :text "${HUMIDITY} %")
-            )
-
           )
+          (label :class "title_heading" :text "Feels like" )
 
-          (box :class "box_quote" :orientation "v"  :space-evenly "false"
-          (label :class "date_text"  :width 400  :valign "center" :halign "center" :text "${TIME}")
-          (label :class "date_text"  :width 400  :valign "center" :halign "center" :text "${DATE}")
+          (box :class "box_feels box_indicator" :style "padding:4px 8px; border-radius:10px;" :orientation "h" :valign "center"  :halign "center" :space-evenly "center"
+        
+          (box :class "icon" :height 32 :width 32 :halign "center" :style "background-image: url('${feel_icon}'); background-size:32px;")
+          (label :class "feels_text text_indicator" :style "margin-left:5px; margin-right:3px; margin-top:-0px;" :text FEELS_LIKE)
         )
 
-          (box :class "box_quote" :orientation "v"  :space-evenly "false"
-            (label :class "quote_text" :wrap "true" :justify "center" :width 400  :valign "center" :halign "center" :text "${QUOTE}")
+        (label :class "title_heading" :text "Weather Conditions")  
+
+          (box :class "box_content" :orientation "h" :valign "start"  :halign "center" :space-evenly "false" 
+            (box :class "box_feels box_indicator" :width 120 :height 120 :orientation "v" :valign "center"  :halign "center" :space-evenly "center"
+            (label :class "text_heading" :text "Pressure")  
+              (box :class "icon" :height 34 :width 34 :halign "center" :style "background-image: url('${pressure_icon}');")
+              (label :class "feels_text text_indicator" :text "${PRESSURE} hPa")
+            )
+
+            (box :class "box_feels box_indicator" :width 120 :height 120 :orientation "v" :valign "center"  :halign "center" :space-evenly "center"
+              (label :class "text_heading" :text "Humidity")  
+              (box :class "icon" :height 34 :width 34 :halign "center" :style "background-image: url('${humidity_icon}');")
+              (label :class "feels_text text_indicator" :text "${HUMIDITY}%")
+            )
+
+          )
+          (label :class "title_heading" :text "Wind Status")  
+          (box :class "box_content" :orientation "h" :valign "start"  :halign "center" :space-evenly "false" 
+            (box :class "box_feels box_indicator" :orientation "v" :width 120 :height 120 :valign "center"  :halign "center" :space-evenly "center"
+            (label :class "text_heading" :text "Speed")  
+              (box :class "icon" :height 34 :width 34 :halign "center" :style "background-image: url('${wind_speed_icon}');")
+              (label :class "feels_text text_indicator" :text "${WIND_SPEED} m/s")
+            )
+
+            (box :class "box_feels box_indicator" :orientation "v" :valign "center" :width 120 :height 120  :halign "center" :space-evenly "center"
+              (label :class "text_heading" :text "Deg")  
+              (box :class "icon" :height 34 :width 34 :halign "center" :style "background-image: url('${wind_direction_icon}');")
+              (label :class "feels_text text_indicator" :text "${WIND_DEG}°")
+            )
+
+          )
+
+          (box :class "box_quote" :orientation "v"  :space-evenly "false" :style "margin-top:10px;"
+            (box :class "time_idc" :space-evenly "center" :valign "center" :halign "center" 
+              (box :class "time_icon" :width 32 :height 32 :style "background-image: url('${clock_icon}')")
+              (label :class "date_text"   :valign "center" :halign "center" :text "${TIME}")
+            )
+            (box :class "time_idc" :space-evenly "center" :valign "center" :halign "center" 
+              (box :class "time_icon" :width 32 :height 32 :style "background-image: url('${calendar_icon}')")
+              (label :class "date_text"   :valign "center" :halign "center" :text "${DATE}")
+            )
+          )
+
+          (box :class "box_quote" :orientation "h" :space-evenly "center" :valign "center" :halign "center"
+            (label :class "quote_text" :width 400 :wrap true :valign "center" :halign "center"  :text "${QUOTE}")
           )
           
       )
