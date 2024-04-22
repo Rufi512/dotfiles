@@ -203,12 +203,12 @@
   (revealer :reveal "true"
     (eventbox
       :onhoverlost "eww close player"
-        (box :class "player_box" :style "background-color: rgb(${background_color})" :orientation "h" :halign "start" :space-evenly "start" :valign "center"
+        (box :class "player_box" :style "background-color: rgb(${background_color})" :orientation "h" :space-evenly false 
         
         (
-          box :class "player_info" :width 380 :orientation "v" :space-evenly "start" :halign "start"  :valign "center"
-          (label :class "player_name"  :text player :style "color:rgb(${indicator_color})" :halign "start" :valign "start" )
-          (label :class "player_title"  :wrap "true"  :text song :style "color:rgb(${text_color})" :halign "start" :valign "start" )
+          box :class "player_info" :width 380 :orientation "v" :space-evenly false  :valign "center"
+          (label :class "player_name"  :text player :style "color:rgb(${indicator_color})" :halign "start" )
+          (label :class "player_title" :tooltip song :wrap "true" :limit-width 84 :text song :style "color:rgb(${text_color});" :halign "start"  )
           (label :class "player_artist" :wrap "true"  :text "${song_artist}" :style "color:rgb(${indicator_color})" :halign "start" :valign "start")
 
           (box :class "player_d" :orientation "v" 
@@ -350,7 +350,7 @@
            :stacking "fg"
            :reserve (struts :distance "0px" :side "top")
            :windowtype "dock"
-           :wm-ignore false
+           :wm-ignore true
 (music))
 
 ;; system
@@ -364,5 +364,5 @@
            :stacking "fg"
            :reserve (struts :distance "0px" :side "top")
            :windowtype "dock"
-           :wm-ignore false
+           :wm-ignore true
 (system))

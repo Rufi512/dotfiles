@@ -84,6 +84,23 @@ def main():
             r, g, b = map(float, color.split(','))
             luminosity = 0.2126*r + 0.7152*g + 0.0722*b
             return luminosity
+        
+        def calculate_contrast(color1, color2):
+            luminosity1 = calculate_luminosity(color1)
+            luminosity2 = calculate_luminosity(color2)
+            contrast = (max(luminosity1, luminosity2) + 0.05) / (min(luminosity1, luminosity2) + 0.05)
+            return contrast
+        
+        def increase_contrast(color, factor):
+            r, g, b = color.split(',')
+            r = round(float(r))
+            g = round(float(g))
+            b = round(float(b))
+    
+            new_r = min(int(round(r) * factor), 255)
+            new_g = min(int(round(g) * factor), 255)
+            new_b = min(int(round(b) * factor), 255)
+            return f'{new_r}, {new_g}, {new_b}'
 
         darkest_color = None
         darkest_color_position = None
@@ -96,6 +113,20 @@ def main():
                 darkest_color_position = x
                 darkest_luminosity = luminosity
 
+        # Compare darkest_color with other colors
+        for x, color in enumerate(colors):
+            if color != darkest_color:
+                contrast = calculate_contrast(darkest_color, color)
+                print(f"Contrast between darkest_color and color in position {x}: {contrast}")
+                if contrast < 4:
+                    new_color = increase_contrast(color, 1.8)
+                    colors[x] = new_color
+
+                if x > 0 and contrast < 7:
+                    new_color = increase_contrast(color, 2.3)
+                    colors[x] = new_color
+
+                
         print("Darkest color:", darkest_color)
 
         print(colors)
@@ -117,7 +148,8 @@ def main():
 
         with open(directory + "/indicator_color", "w") as outfile:
             outfile.write(colors[(darkest_color_position - 1 + len(colors)) % len(colors)])
-    except:
+    except Exception as error:
+        print(error)
         defaultData()
 
 main()
