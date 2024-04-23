@@ -20,9 +20,6 @@ These are the ones used
 | API_KEY_WEATHER  | API key from openweathermap |
 | CITY_WEATHER  | Your city id from openweathermap|
 
-<img src="https://github.com/Rufi512/dotfiles/blob/main/.config/eww/screenshot.png" alt="eww"/>
-
-
 **Weather**
 
 <img src="https://github.com/Rufi512/dotfiles/blob/main/.config/eww/weather.png" alt="eww-weather"/>

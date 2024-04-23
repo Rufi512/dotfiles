@@ -96,7 +96,7 @@ def main():
             r = round(float(r))
             g = round(float(g))
             b = round(float(b))
-    
+
             new_r = min(int(round(r) * factor), 255)
             new_g = min(int(round(g) * factor), 255)
             new_b = min(int(round(b) * factor), 255)

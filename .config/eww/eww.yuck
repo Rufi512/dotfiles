@@ -39,6 +39,10 @@
 
 (defvar music_reveal false)
 (defvar forecast_details false)
+(defvar volume_muted `images/icons/music/muted.png`)
+(defvar volume_low `images/icons/music/volume-level-1.png`)
+(defvar volume_medium `images/icons/music/volume-level-2.png`)
+(defvar volume_high `images/icons/music/volume-level-3.png`)
 
 ;; Mail vars
 (defpoll MAILS :interval "5m" `scripts/mails`)
@@ -55,9 +59,12 @@
 (defpoll status_button :interval "1s"  "~/.config/eww/scripts/music_info --status")
 (defpoll cover_art :interval "1s"  "~/.config/eww/scripts/music_info --cover")
 (defpoll percent :interval "1s"  "~/.config/eww/scripts/music_info --percent")
+(defpoll percent_volume :interval "0.1s"  "~/.config/eww/scripts/music_info --percent_volume")
 (defpoll background_color :interval "1s"  "~/.config/eww/scripts/music_info --color_background")
 (defpoll text_color :interval "1s"  "~/.config/eww/scripts/music_info --color_text")
 (defpoll indicator_color :interval "1s"  "~/.config/eww/scripts/music_info --color_indicator")
+(defpoll volume_status :interval "1s"  "~/.config/eww/scripts/music_info --volume_status")
+
 ;; ** Widgets *************************************************************************
 
 
@@ -178,17 +185,17 @@
 
   (eventbox
     :onclick "eww open player & python ./scripts/dominant.py"
-    :onscroll "if [ '{}' == 'up' ]; then amixer -D pulse sset Master '1%+'; else amixer -D pulse sset Master '1%-'; fi;"
+    :onscroll "if [ '{}' == 'up' ]; then ~/.config/eww/scripts/music_info --volume_up; else ~/.config/eww/scripts/music_info --volume_down; fi;"
     (box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
     (box :class "song_cover_art" :height 40 :width 40 :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
     (box  :vexpand "false" :space-evenly "false" :hexpand "false" :width 330 
       (label :class "song_title" :width 330   :show-truncated "true" :limit-width 35 :text song)
     )
-        (box :vexpand "false" :orientation "h" :hexpand "false" :width 150 :space-evenly "false" :halign "end"
+        (box :vexpand "false" :orientation "h" :hexpand "false" :width 90 :space-evenly "false" :halign "end"
           (button :class "song_btn_play" :cursor "pointer" :width 30 :hexpand "false" :onclick "~/.config/eww/scripts/music_info --toggle" :style "background-image: url('${status_button}')")
-          (label :class "song_time_current" :text current_status)
-          (label :width 20 :limit-width 4 :text "-")
-          (label :class "song_time_length" :text song_length)
+          (button :cursor "pointer" :onclick "~/.config/eww/scripts/music_info --volume_mute"
+            (box :width 28 :height 28 :class "icon_volume" :style "background-image: url('images/icons/music/${volume_status}')")
+          )
       )
     )
   )		 
@@ -203,13 +210,19 @@
   (revealer :reveal "true"
     (eventbox
       :onhoverlost "eww close player"
+      :onscroll "if [ '{}' == 'up' ]; then ~/.config/eww/scripts/music_info --volume_up; else ~/.config/eww/scripts/music_info --volume_down; fi;"
         (box :class "player_box" :style "background-color: rgb(${background_color})" :orientation "h" :space-evenly false 
         
         (
           box :class "player_info" :width 380 :orientation "v" :space-evenly false  :valign "center"
           (label :class "player_name"  :text player :style "color:rgb(${indicator_color})" :halign "start" )
-          (label :class "player_title" :tooltip song :wrap "true" :limit-width 84 :text song :style "color:rgb(${text_color});" :halign "start"  )
+          (label :class "player_title" :tooltip song :wrap "true" :limit-width 60 :text song :style "color:rgb(${text_color});" :halign "start"  )
           (label :class "player_artist" :wrap "true"  :text "${song_artist}" :style "color:rgb(${indicator_color})" :halign "start" :valign "start")
+          
+          (box :class "player_volume" :halign "start" :orientation "h"  :width 110 :height 27  :space-evenly false :valign "center" :style "margin: 5px 0;"
+            (label :text "󰖀" :style "color:rgb(${indicator_color}); margin-bottom:-10px; margin-right:10px; margin-left:3px; font-size:20px;")
+            (progress :class "percent_volume" :value percent_volume)
+          )
 
           (box :class "player_d" :orientation "v" 
             (box :class "box_bar" (progress  :value percent))
@@ -282,7 +295,7 @@
 		:monitor 0
 		:geometry (geometry :x "10px"
 							:y "5px"
-							:width "110px"
+							:width "210px"
 							:height "40px"
 							:padding "10px"
 							:anchor "top left")

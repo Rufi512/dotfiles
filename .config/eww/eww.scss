@@ -318,6 +318,12 @@ tooltip label {
 	opacity: 0.9;
 }
 
+.icon_volume{
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
 .player_d .song_time_current{
 	padding-top: 10px;
 	font-size: 15;
@@ -332,6 +338,11 @@ tooltip label {
 progressbar *{
 	background: #e5e5eb;
 	border-radius: 50px;
+}
+
+
+.player_volume{
+	margin-bottom: 0px;
 }
 
 progressbar > trough{

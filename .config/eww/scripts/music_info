@@ -3,6 +3,7 @@
 
 ## Get data
 cache_dir="$HOME/.cache/eww/music_player"
+cache_volume="${cache_dir}/volume"
 cache_background="${cache_dir}/background_color"
 cache_indicator="${cache_dir}/indicator_color"
 text_color="${cache_dir}/text_color"
@@ -91,6 +92,50 @@ get_percent(){
 	fi	
 }
 
+## Get Volume
+get_volume(){
+	VOLUME=$(pamixer --get-volume)
+	STATUS_VOLUME=$(pamixer --get-mute)
+	if [ $STATUS_VOLUME = true ]; then
+		echo "mute.png" > ${cache_volume}
+	fi
+
+	if [ $VOLUME -gt 50 ] && [ $STATUS_VOLUME = false ]; then
+		echo "volume-level-3.png" > ${cache_volume}
+	elif [ $VOLUME -gt 25 ] && [ $STATUS_VOLUME = false ]; then
+		echo "volume-level-2.png" > ${cache_volume}
+	elif [ $VOLUME -gt 0 ] && [ $STATUS_VOLUME = false ]; then
+		echo "volume-level-1.png" > ${cache_volume}
+	elif [ $VOLUME -lt 1 ] && [ $STATUS_VOLUME = false ]; then
+		echo "mute.png" > ${cache_volume}
+	fi
+
+	cat "$cache_volume"
+
+}
+
+percent_volume(){
+	VOLUME=$(pamixer --get-volume)
+	echo "$VOLUME"
+}
+
+mute_volume(){
+	STATUS_VOLUME=$(pamixer --get-mute)
+	if [ $STATUS_VOLUME = false ]; then
+		pamixer --mute
+	else
+		pamixer --unmute
+	fi;
+}
+
+set_volume_up(){
+	pamixer -i 2 --allow-boost
+}
+
+set_volume_down(){
+	pamixer -d 2 --allow-boost
+}
+
 ## Get Colors
 get_color_1(){
 	cat "$text_color"
@@ -131,6 +176,16 @@ elif [[ "$1" == "--color_background" ]]; then
 	get_color_2
 elif [[ "$1" == "--color_indicator" ]]; then
 	get_color_3
+elif [[ "$1" == "--volume_up" ]]; then
+	set_volume_up
+elif [[ "$1" == "--volume_down" ]]; then
+	set_volume_down
+elif [[ "$1" == "--volume_status" ]]; then
+	get_volume
+elif [[ "$1" == "--percent_volume" ]]; then
+	percent_volume
+elif [[ "$1" == "--volume_mute" ]]; then
+	mute_volume
 elif [[ "$1" == "--toggle" ]]; then
 	playerctl play-pause
 fi
