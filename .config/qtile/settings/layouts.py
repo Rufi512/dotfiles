@@ -8,13 +8,13 @@ layout_conf = {
 }
 
 layouts = [
-    layout.Max(margin=[0, 10, 5, 10]),
-    layout.Stack(num_sacks=1, margin=[0, 5, 5, 5]),
+    layout.Max(margin=[50, 10, 5, 10]),
+    layout.Stack(num_sacks=1, margin=[50, 10, 5, 10]),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
     # layout.Columns(),
-    layout.Matrix(margin=[0, 5, 5, 5]),
-    layout.MonadTall(margin=5),
+    layout.Matrix(margin=[50, 10, 5, 10]),
+    layout.MonadTall(margin=[50, 10, 5, 10]),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),

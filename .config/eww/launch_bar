@@ -11,16 +11,15 @@ fi
 
 ## Open widgets 
 run_eww() {
+	eww kill
 	${EWW} --config "$CFG" open-many \
-		   weather \
 		   music \
 		   forecast \
 		   system \
-		   forecast_info \
-		   player \
 		   spacer
-
+  /usr/bin/python3 $HOME/.config/eww/scripts/dominant.py &
 }
 
 ## Launch or close widgets accordingly
 run_eww
+

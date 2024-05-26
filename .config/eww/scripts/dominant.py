@@ -2,7 +2,7 @@
 import cv2
 import numpy as np
 import subprocess
-import os
+import os,time
 import re
 from pathlib import Path
 
@@ -22,6 +22,8 @@ def defaultData():
         outfile.write("199,201,217")
 
 def main():
+
+
     music_player = subprocess.run('playerctl metadata',shell=True,stdout=subprocess.PIPE, text=True).stdout
     if(music_player == '' or music_player == 'No player could handle this command'):
         return defaultData()
@@ -29,6 +31,8 @@ def main():
     # Verify if title is equal to the data
     name_track = subprocess.run("playerctl metadata --format '{{title}}'",shell=True,stdout=subprocess.PIPE, text=True).stdout
     image_track = subprocess.run("playerctl metadata --format '{{mpris:artUrl}}'",shell=True,stdout=subprocess.PIPE, text=True).stdout.strip()
+    
+    content = ''
 
     if(os.path.isfile(directory + "/song_name")):
         file = open(directory + "/song_name", "r")
@@ -41,7 +45,7 @@ def main():
         # Read the image path
         # Check if the image is obtained from file://
         is_file = re.match(r"(file)://", image_track)
-        print(is_file)
+       
         if is_file:
             split_path = image_track.split('file://',1)[1]
             path_image = split_path
@@ -96,14 +100,13 @@ def main():
             r = round(float(r))
             g = round(float(g))
             b = round(float(b))
-
             new_r = min(int(round(r) * factor), 255)
             new_g = min(int(round(g) * factor), 255)
             new_b = min(int(round(b) * factor), 255)
             return f'{new_r}, {new_g}, {new_b}'
 
-        darkest_color = None
-        darkest_color_position = None
+        darkest_color = 0
+        darkest_color_position = 0
         darkest_luminosity = float('inf')
 
         for x, color in enumerate(colors):
@@ -117,7 +120,6 @@ def main():
         for x, color in enumerate(colors):
             if color != darkest_color:
                 contrast = calculate_contrast(darkest_color, color)
-                print(f"Contrast between darkest_color and color in position {x}: {contrast}")
                 if contrast < 4:
                     new_color = increase_contrast(color, 1.8)
                     colors[x] = new_color
@@ -127,9 +129,7 @@ def main():
                     colors[x] = new_color
 
                 
-        print("Darkest color:", darkest_color)
 
-        print(colors)
         # Data to be written
     
         if not os.path.exists(directory):
@@ -148,8 +148,10 @@ def main():
 
         with open(directory + "/indicator_color", "w") as outfile:
             outfile.write(colors[(darkest_color_position - 1 + len(colors)) % len(colors)])
+
     except Exception as error:
         print(error)
         defaultData()
-
-main()
+while True:
+    main()
+    time.sleep(3)

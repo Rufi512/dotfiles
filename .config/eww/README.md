@@ -30,4 +30,4 @@ These are the ones used
 
 ## Notes
 
-The player uses a script to get the most dominant colors of the cover image only when you click to open, the contrast colors can sometimes be displayed incorrectly, is partially fixed but can be improved ⛏️
+The player uses a script to get the most dominant colors from the cover image, this is running as a background process, the contrast colors can sometimes be displayed incorrectly, it is partially fixed but can be improved. ⛏️

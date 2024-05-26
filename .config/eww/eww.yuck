@@ -184,7 +184,7 @@
 (defwidget music [] 
 
   (eventbox
-    :onclick "eww open player & python ./scripts/dominant.py"
+    :onclick "eww open player"
     :onscroll "if [ '{}' == 'up' ]; then ~/.config/eww/scripts/music_info --volume_up; else ~/.config/eww/scripts/music_info --volume_down; fi;"
     (box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
     (box :class "song_cover_art" :height 40 :width 40 :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
@@ -347,7 +347,7 @@
               :padding "0px"
               :anchor "top left")
     :stacking "fg"
-    :reserve (struts :distance "50px" :side "top")
+    :reserve (struts :distance "0px" :side "top")
     :focusable "false"
   
   (spacer))
